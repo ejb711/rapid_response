@@ -1,0 +1,21 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Medical Background Pattern -->
+  <path d="M0 0h800v400H0z" fill="#8B0000" fill-opacity="0.05"/>
+  
+  <!-- Medical Cross Symbol -->
+  <g transform="translate(350,150)">
+    <rect x="-15" y="-40" width="30" height="80" fill="#8B0000"/>
+    <rect x="-40" y="-15" width="80" height="30" fill="#8B0000"/>
+  </g>
+  
+  <!-- Computer/Device Outline -->
+  <rect x="250" y="100" width="300" height="200" rx="10" fill="none" stroke="#8B0000" stroke-width="4"/>
+  
+  <!-- Text -->
+  <text x="400" y="350" text-anchor="middle" font-size="24" fill="#2C3E50" font-family="Arial">
+    Virtual Healthcare
+  </text>
+</svg>

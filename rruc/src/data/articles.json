@@ -1,0 +1,15 @@
+{
+    "articles": [
+      {
+        "id": 1,
+        "title": "Understanding Virtual Healthcare: A Complete Guide",
+        "excerpt": "Learn how virtual healthcare is transforming the way we access medical services and what this means for you and your family. Discover the benefits, limitations, and best practices for telehealth appointments.",
+        "category": "Health Tips",
+        "date": "Dec 5, 2023",
+        "image": "/src/assets/carecompass/virtual-visit.jpg",
+        "imageCaption": "Virtual Healthcare",
+        "link": "/articles/virtual-healthcare-guide",
+        "featured": true
+      }
+    ]
+  }

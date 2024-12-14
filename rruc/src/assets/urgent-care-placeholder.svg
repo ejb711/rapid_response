@@ -1,0 +1,23 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Medical Background Pattern -->
+  <path d="M0 0h800v400H0z" fill="#8B0000" fill-opacity="0.05"/>
+  
+  <!-- Heartbeat Line -->
+  <path d="M100 200 L200 200 L250 100 L300 300 L350 150 L400 250 L450 200 L700 200" 
+        stroke="#8B0000" 
+        fill="none" 
+        stroke-width="4"/>
+  
+  <!-- Medical Staff Icon -->
+  <circle cx="400" cy="150" r="50" fill="#8B0000"/>
+  <rect x="385" y="120" width="30" height="60" fill="white"/>
+  <rect x="370" y="135" width="60" height="30" fill="white"/>
+  
+  <!-- Text -->
+  <text x="400" y="350" text-anchor="middle" font-size="24" fill="#2C3E50" font-family="Arial">
+    Urgent Care Services
+  </text>
+</svg>
