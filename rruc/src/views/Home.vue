@@ -1,43 +1,162 @@
 <template>
-  <div class="home">
+  <main class="home">
     <!-- Hero Section -->
-    <section class="hero-section py-12">
+    <section 
+      class="hero-section py-12"
+      aria-labelledby="hero-title"
+    >
       <v-container>
-        <v-row>
+        <v-row align="center">
           <v-col cols="12" md="6">
-            <h1 class="text-h2 font-weight-bold mb-4">
-              Virtual Visits from the comfort of your home
+            <h1 
+              id="hero-title"
+              class="text-h2 font-weight-bold mb-4"
+            >
+              Healthcare That Puts You First
             </h1>
             <p class="text-body-1 mb-6">
-              Virtual visits are a convenient and comfortable process to connect with healthcare providers. Get quality care from your phone or computer.
+              Delivering accessible, high-quality healthcare through both in-person and virtual solutions. We accept walk-ins or you can reserve and schedule appointments online. Our mission is to make healthcare more convenient and personalized for everyone.
             </p>
-            <div class="d-flex gap-4">
-              <v-btn
-                color="primary"
-                size="large"
-                class="text-white"
-                prepend-icon="mdi-calendar"
-                to="/services"
-              >
-                Book an Appointment
-              </v-btn>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-img
+              :src="girlTissueImage"
+              alt="Healthcare provider examining patient tissue sample"
+              class="rounded-lg hero-image"
+              cover
+              height="400"
+              role="img"
+            >
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                  role="status"
+                  aria-label="Loading image"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                    aria-label="Loading"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+
+    <!-- Location Section -->
+    <section 
+      class="location-section py-8 bg-grey-lighten-4" 
+      aria-labelledby="location-heading"
+    >
+      <v-container fluid>
+        <v-row align="center">
+          <v-col cols="12" sm="12" md="6">
+            <div class="location-info pa-4">
+              <h2 id="location-heading" class="text-h4 mb-4">Opening Soon in Morgan City!</h2>
+              <address class="text-h6">
+                <p>609 Brashear Ave</p>
+                <p class="text-body-1 text-grey">Next to CORE Physical Therapy</p>
+                <p class="text-body-1 text-grey">Across from Danny's Fried Chicken</p>
+                <p class="text-body-1 mt-4">Hours of Operation:</p>
+                <p class="text-body-1 text-grey mb-4">Monday - Friday: 8:00 AM - 4:00 PM</p>
+              </address>
               <v-btn
                 variant="outlined"
                 size="large"
-                prepend-icon="mdi-information"
+                prepend-icon="mdi-map-marker"
+                href="https://maps.app.goo.gl/sQF1w3L17VPvbrPL6"
+                target="_blank"
+                rel="noopener"
+                class="text-primary"
+                aria-label="Get directions to Rapid Response Urgent Care Morgan City location"
               >
-                Learn More
+                Get Directions
               </v-btn>
+            </div>
+          </v-col>
+          <v-col cols="12" sm="12" md="6" class="d-flex justify-center">
+            <div class="map-container">
+              <iframe 
+                title="Rapid Response Urgent Care Morgan City Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.825076838367!2d-91.20791123487523!3d29.700816782000523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8621619b6a2c70e5%3A0x141e910f3837b6cb!2sRapid%20Response%20Urgent%20Care!5e0!3m2!1sen!2sus!4v1702750848673!5m2!1sen!2sus"
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+              />
             </div>
           </v-col>
         </v-row>
       </v-container>
     </section>
 
+    <!-- Telemedicine Hero Section -->
+    <section 
+      class="telemedicine-section py-12"
+      aria-labelledby="telemedicine-heading"
+    >
+      <v-container fluid>
+        <v-row align="center">
+          <v-col cols="12" sm="12" md="6">
+            <div class="d-flex align-center flex-wrap gap-4 mb-4">
+              <h2 id="telemedicine-heading" class="text-h2 font-weight-bold">
+                Urgent Care from the comfort of your home
+              </h2>
+              <v-chip
+                color="primary"
+                variant="outlined"
+                label
+                class="coming-soon-chip"
+                aria-label="Coming Soon Badge"
+              >
+                Coming Soon
+              </v-chip>
+            </div>
+            <p class="text-body-1 mb-6">
+              Skip the waiting room. Our telemedicine service connects you with experienced healthcare providers for immediate, non-emergency medical concerns.
+            </p>
+            <div class="d-flex gap-4">
+              <v-btn
+                variant="outlined"
+                size="large"
+                prepend-icon="mdi-information"
+                :to="{ name: 'VirtualVisitLearnMore' }"
+                aria-label="Learn more about virtual visits"
+              >
+                Learn More
+              </v-btn>
+            </div>
+          </v-col>
+
+          <v-col cols="12" sm="12" md="6" class="d-flex justify-center">
+            <v-img
+              :src="feverImage"
+              alt="Telemedicine consultation for child with fever"
+              class="telemedicine-image"
+              cover
+              rounded="lg"
+              role="img"
+              aria-label="Telemedicine consultation illustration"
+            />
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+
     <!-- Services Section -->
-    <section class="services-section py-16 bg-grey-lighten-4">
+    <section 
+      class="services-section py-16 bg-grey-lighten-4"
+      aria-labelledby="services-heading"
+    >
       <v-container>
-        <h2 class="text-h4 text-center mb-12">Our Virtual Services</h2>
+        <h2 id="services-heading" class="text-h4 text-center mb-12">Urgent Care Services</h2>
         <v-row>
           <v-col 
             v-for="service in services" 
@@ -45,80 +164,17 @@
             cols="12" 
             md="4"
           >
-            <v-card class="h-100">
+            <v-card class="h-100" role="article">
               <v-card-item>
                 <v-icon
                   :icon="service.icon"
                   size="large"
                   color="primary"
                   class="mb-4"
+                  :aria-label="service.iconLabel"
                 />
                 <v-card-title class="text-h6">{{ service.title }}</v-card-title>
                 <v-card-text>{{ service.description }}</v-card-text>
-                <v-card-actions>
-                  <v-btn
-                    variant="text"
-                    color="primary"
-                    class="px-0"
-                  >
-                    Learn More
-                  </v-btn>
-                </v-card-actions>
-              </v-card-item>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works py-16">
-      <v-container>
-        <h2 class="text-h4 text-center mb-12">How Virtual Visits Work</h2>
-        <v-row>
-          <v-col 
-            v-for="(step, index) in steps" 
-            :key="step.title" 
-            cols="12" 
-            md="3"
-          >
-            <div class="text-center">
-              <div class="step-number mb-4">{{ index + 1 }}</div>
-              <h3 class="text-h6 mb-4">{{ step.title }}</h3>
-              <p>{{ step.description }}</p>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials py-16 bg-grey-lighten-4">
-      <v-container>
-        <h2 class="text-h4 text-center mb-12">What Our Patients Say</h2>
-        <v-row>
-          <v-col 
-            v-for="testimonial in testimonials" 
-            :key="testimonial.name" 
-            cols="12" 
-            md="4"
-          >
-            <v-card class="h-100">
-              <v-card-item>
-                <div class="mb-4">
-                  <v-rating
-                    :model-value="5"
-                    color="amber"
-                    density="compact"
-                    readonly
-                  ></v-rating>
-                </div>
-                <v-card-text>
-                  "{{ testimonial.quote }}"
-                </v-card-text>
-                <v-card-subtitle class="pt-4">
-                  - {{ testimonial.name }}
-                </v-card-subtitle>
               </v-card-item>
             </v-card>
           </v-col>
@@ -127,121 +183,231 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta py-16">
-      <v-container>
+    <section 
+      class="cta py-16"
+      aria-labelledby="cta-heading"
+    >
+      <v-container fluid>
         <v-row justify="center">
           <v-col cols="12" md="8" class="text-center">
-            <h2 class="text-h4 mb-6">Ready to get started?</h2>
+            <h2 id="cta-heading" class="text-h4 mb-6">Coming Soon: Virtual Visits</h2>
             <p class="text-body-1 mb-6">
-              Book your virtual visit today and experience healthcare from the comfort of your home.
+              Experience the future of urgent care from the comfort of your home. Coming Soon.
             </p>
             <v-btn
-              color="primary"
+              variant="outlined"
               size="large"
-              to="/services"
-              class="text-white"
+              prepend-icon="mdi-information"
+              :to="{ name: 'VirtualVisitLearnMore' }"
+              class="text-primary"
+              aria-label="Learn more about upcoming virtual visits"
             >
-              Book an Appointment
+              Learn More
             </v-btn>
           </v-col>
         </v-row>
       </v-container>
     </section>
-  </div>
+  </main>
 </template>
 
 <script setup>
-// Service options data
+import { ref } from 'vue'
+import { useHead } from '@vueuse/head'
+import girlTissueImage from '@/assets/stock/girl_tissue.jpg'
+import feverImage from '@/assets/stock/telemed_child_with_fever.jpg'
+
+useHead({
+  title: 'Rapid Response Urgent Care - Morgan City, LA | Healthcare That Puts You First',
+  meta: [
+    {
+      name: 'description',
+      content: 'Opening soon in Morgan City! Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Located at 609 Brashear Ave. Open Monday-Friday 8am-4pm.'
+    },
+    {
+      name: 'keywords',
+      content: 'urgent care, Morgan City, telemedicine, virtual visits, medical care, walk-in clinic, Louisiana healthcare'
+    },
+    {
+      property: 'og:title',
+      content: 'Rapid Response Urgent Care - Morgan City, LA'
+    },
+    {
+      property: 'og:description',
+      content: 'Opening soon in Morgan City! Quick medical attention and virtual visits for non-emergency conditions. Open Monday-Friday 8am-4pm.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:image',
+      content: girlTissueImage
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "Rapid Response Urgent Care",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "609 Brashear Ave",
+          "addressLocality": "Morgan City",
+          "addressRegion": "LA",
+          "addressCountry": "US"
+        },
+        "description": "Quick medical attention and virtual visits for non-emergency conditions",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "16:00"
+          }
+        ],
+        "url": "https://rrurgentcare.com",
+        "sameAs": ["https://www.facebook.com/people/Rapid-Response-Urgent-Care/61566987523640/"]
+      })
+    }
+  ]
+})
+
 const services = [
   {
-    icon: 'mdi-doctor',
-    title: 'General Consultations',
-    description: 'Connect with healthcare providers for general health concerns and follow-ups.'
+    icon: 'mdi-stethoscope',
+    iconLabel: 'Medical Evaluations Icon',
+    title: 'Medical Evaluations',
+    description: 'Quick medical attention for non-emergency conditions like minor injuries, infections, and acute illnesses.'
   },
   {
     icon: 'mdi-pill',
-    title: 'Prescription Renewals',
-    description: 'Easy prescription renewals and medication management with our virtual service.'
+    iconLabel: 'Prescriptions Icon',
+    title: 'Prescriptions',
+    description: 'Get prescriptions for urgent medical needs when appropriate, sent directly to your preferred pharmacy.'
   },
   {
-    icon: 'mdi-account-group',
-    title: 'Family Care',
-    description: 'Comprehensive healthcare for the whole family, including pediatric services.'
-  }
-]
-
-// How it works steps
-const steps = [
-  {
-    title: 'Book Appointment',
-    description: 'Select a time that works best for you through our online booking system.'
-  },
-  {
-    title: 'Fill Information',
-    description: 'Provide basic information about your health concern and medical history.'
-  },
-  {
-    title: 'Join Virtual Visit',
-    description: 'Connect with your healthcare provider through our secure video platform.'
-  },
-  {
-    title: 'Get Care',
-    description: 'Receive personalized care, prescriptions, and follow-up instructions.'
-  }
-]
-
-// Testimonials data
-const testimonials = [
-  {
-    quote: 'The virtual visit was so convenient and the doctor was very thorough and caring.',
-    name: 'Sarah M.'
-  },
-  {
-    quote: 'Quick, efficient, and professional. Saved me so much time compared to in-person visits.',
-    name: 'James R.'
-  },
-  {
-    quote: 'Excellent service! The platform was easy to use and the care was top-notch.',
-    name: 'Emily L.'
+    icon: 'mdi-file-document',
+    iconLabel: 'Medical Documentation Icon',
+    title: 'Medical Documentation',
+    description: 'Receive comprehensive visit summaries and sick notes for work or school as needed.'
   }
 ]
 </script>
 
 <style scoped>
 .hero-section {
-  background-color: var(--v-background-base);
-  min-height: 500px;
-  display: flex;
-  align-items: center;
+  background: linear-gradient(to right, var(--v-background-base), var(--v-surface-base));
 }
 
-.step-number {
-  width: 40px;
-  height: 40px;
-  background-color: var(--v-primary-base);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 1.25rem;
-  font-weight: bold;
+.hero-image {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.location-section {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.location-info {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.telemedicine-section {
+  background-color: var(--v-background-base);
+}
+
+.telemedicine-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 
 .gap-4 {
   gap: 1rem;
 }
 
+.coming-soon-chip {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon-chip {
+    animation: none;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast improvements */
+@media (prefers-contrast: high) {
+  .text-medium-emphasis {
+    color: #000000 !important;
+  }
+  
+  .bg-grey-lighten-4 {
+    background-color: #ffffff !important;
+  }
+}
+
 @media (max-width: 600px) {
   .hero-section {
     text-align: center;
-    min-height: auto;
-    padding: 4rem 0;
   }
   
+  .hero-image {
+    margin-top: 24px;
+  }
+
+  .telemedicine-section,
+  .location-section {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
   .gap-4 {
     justify-content: center;
+  }
+  
+  .coming-soon-chip {
+    margin: 0 auto;
   }
 }
 </style>

@@ -15,7 +15,7 @@ const ArticleComponent = shallowRef(null)
 
 onMounted(async () => {
   try {
-    const importedComponent = (await import(`./${route.params.articleSlug}.vue`)).default
+    const importedComponent = (await import(`./content/${route.params.articleSlug}.vue`)).default
     ArticleComponent.value = importedComponent
   } catch (e) {
     // If the component isn't found, show the NotFound component

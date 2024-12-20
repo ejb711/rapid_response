@@ -2,8 +2,10 @@ import { createApp } from 'vue'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import { createHead } from '@vueuse/head'
 import App from './App.vue'
 import router from './router'
+import { initGoogleAnalytics } from './analytics'
 
 // Styles
 import 'vuetify/styles'
@@ -36,7 +38,17 @@ const vuetify = createVuetify({
   }
 })
 
+// Initialize Google Analytics in production
+if (process.env.NODE_ENV === 'production') {
+  initGoogleAnalytics()
+}
+
+// Create head instance
+const head = createHead()
+
+// Create and configure app
 const app = createApp(App)
 app.use(router)
 app.use(vuetify)
+app.use(head)
 app.mount('#app')

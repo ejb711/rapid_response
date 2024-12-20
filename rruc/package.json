@@ -5,14 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node sitemap-generator.js && vite build",
+    "preview": "vite preview",
+    "generate-sitemap": "node sitemap-generator.js"
   },
   "dependencies": {
+    "@mdi/font": "^7.3.67",
+    "@vueuse/head": "^2.0.0",
+    "firebase": "^11.1.0",
+    "prettier": "^3.4.2",
     "vue": "^3.3.0",
+    "vue-meta": "^3.0.0-alpha.2",
     "vue-router": "^4.2.0",
     "vuetify": "^3.4.0",
-    "@mdi/font": "^7.3.67"
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",

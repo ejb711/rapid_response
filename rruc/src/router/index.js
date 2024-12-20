@@ -1,12 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'UnderConstruction',
-  //   component: () => import('../views/UnderConstruction.vue'),
-  //   meta: { title: 'Rapid Response Urgent Care -Under Construction'}
-  // },
   {
     path: '/',
     name: 'Home',
@@ -38,11 +32,38 @@ const routes = [
     meta: { title: 'Care Compass: Your guide to health news, expert insights, and wellness tips' }
   },
   {
+    path: '/virtual-visit/learn-more',
+    name: 'VirtualVisitLearnMore',
+    component: () => import('../views/VirtualVisit_LearnMore.vue'),
+    meta: { title: 'Virtual Visits - Learn More' }
+  },
+  {
     path: '/articles/:articleSlug',
     name: 'article',
     component: () => import('../views/articles/_article.vue'),
     props: true,
     meta: { title: 'Article' }
+  },
+  {
+    path: '/privacy',
+    name: 'privacy',
+    component: () => import('../views/Privacy.vue'),
+    props: true,
+    meta: { title: 'Rapid Response Urgent Care: Privacy Policy' }
+  },
+  {
+    path: '/accessibility',
+    name: 'accessibility',
+    component: () => import('../views/Accessibility.vue'),
+    props: true,
+    meta: { title: 'Rapid Response Urgent Care: Accessibility' }
+  },
+  {
+    path: '/terms',
+    name: 'terms',
+    component: () => import('../views/Terms.vue'),
+    props: true,
+    meta: { title: 'Rapid Response Urgent Care: Terms of Service' }
   },
   {
     path: '/:pathMatch(.*)*',

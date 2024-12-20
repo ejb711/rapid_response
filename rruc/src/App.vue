@@ -1,9 +1,10 @@
 <template>
   <v-app>
+    <!-- App Bar -->
     <v-app-bar
       :class="{ 'navbar-scrolled': isScrolled }"
       elevation="1"
-      height="140"
+      height="180"
       class="navbar-container"
     >
       <div class="logo-section">
@@ -17,14 +18,14 @@
       </div>
 
       <div class="navigation-section">
-        <v-container class="d-flex align-center px-2">
+        <v-container fluid class="d-flex align-center px-4">
+          <v-spacer></v-spacer>
+          
           <v-app-bar-nav-icon
             @click="drawer = !drawer"
             color="white"
-            class="d-flex d-md-none"
+            class="d-flex d-md-none mobile-menu-icon"
           ></v-app-bar-nav-icon>
-
-          <v-spacer></v-spacer>
 
           <div class="d-none d-md-flex align-center gap-4">
             <v-btn
@@ -44,6 +45,19 @@
       </div>
     </v-app-bar>
 
+    <!-- Coming Soon Banner -->
+    <section class="coming-soon-banner py-3">
+      <v-container fluid>
+        <div class="d-flex align-center justify-center gap-4">
+          <v-icon icon="mdi-hospital-building" color="white" />
+          <p class="text-white mb-0">
+            {{ BANNER_TEXT }}
+          </p>
+        </div>
+      </v-container>
+    </section>
+
+    <!-- Navigation Drawer -->
     <v-navigation-drawer
       v-model="drawer"
       temporary
@@ -52,6 +66,7 @@
       <mobile-nav @navigate="handleNavigation" />
     </v-navigation-drawer>
 
+    <!-- Main Content -->
     <v-main>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -60,6 +75,7 @@
       </router-view>
     </v-main>
 
+    <!-- Footer -->
     <v-footer class="pa-0">
       <site-footer />
     </v-footer>
@@ -72,12 +88,14 @@ import { useRoute } from 'vue-router'
 import MobileNav from '@/components/navigation/MobileNav.vue'
 import SiteFooter from '@/components/footer/SiteFooter.vue'
 
+const BANNER_TEXT = 'Urgent Care - Opening Soon!'
 const drawer = ref(false)
 const route = useRoute()
 
 const navigationItems = [
   { title: 'HOME', to: '/' },
   { title: 'SERVICES', to: '/services' },
+  { title: 'CARE COMPASS', to: '/carecompass' },
   { title: 'ABOUT', to: '/about' },
   { title: 'CONTACT', to: '/contact' }
 ]
@@ -85,8 +103,6 @@ const navigationItems = [
 const isScrolled = ref(false)
 
 const handleScroll = () => {
-  // Adjust the scroll threshold as needed.
-  // Increase for more scroll before the effect kicks in, decrease for sooner.
   isScrolled.value = window.scrollY > 50
 }
 
@@ -110,84 +126,95 @@ onUnmounted(() => {
   --border-radius: 8px;
 }
 
+/* Coming Soon Banner */
+.coming-soon-banner {
+  background-color: #8B0000 !important;
+  position: fixed;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Base styles */
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* Application container */
 .v-application {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
+/* Main content area */
 .v-main {
   flex: 1 0 auto;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin-top: calc(140px + 48px);
+  padding-top: 1rem;
 }
 
+/* Footer */
 .v-footer {
   flex-shrink: 0;
+  width: 100%;
+  max-width: 100vw;
 }
 
+/* Container */
 .v-container {
   max-width: var(--content-max-width);
   width: 100%;
   margin: 0 auto;
 }
 
-/* 
-  Initial header styles:
-  Change background-color (#8B0000) if you prefer a different red shade.
-*/
-.v-app-bar {
+/* Navbar styles */
+.navbar-container {
   display: flex;
-  justify-content: space-between;
-  padding: 0;
-  background-color: #8B0000 !important; /* Initial solid red color */
+  align-items: center;
+  padding: 0 !important;
+  background-color: #8B0000 !important;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-
   position: fixed !important;
   width: 100%;
+  max-width: 100vw;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 1000;
 }
 
-/* 
-  When scrolled:
-  - Adjust rgba(139,0,0,0.7) for more or less transparency.
-  - Change blur(8px) to your desired blur amount.
-*/
 .navbar-scrolled {
   background-color: rgba(139, 0, 0, 0.87) !important;
   backdrop-filter: blur(10px) !important;
 }
 
-/* 
-  Apply effect to the logo image when scrolled:
-  - Adjust opacity for how "faded" it looks (1 = no fade, 0 = fully transparent).
-  - Adjust filter: blur(2px) for the amount of blur applied.
-  
-  Try different values:
-  - For less blur: blur(1px) or no blur.
-  - For less transparency: opacity: 0.9 or 0.95.
-*/
 .navbar-scrolled .logo-image {
   opacity: 0.925;
   filter: blur(0px);
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
+/* Logo section */
 .logo-section {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 16px;
 }
 
+/* Navigation section */
 .navigation-section {
-  flex: 2;
+  flex: 1;
   display: flex;
   align-items: center;
 }
@@ -196,6 +223,7 @@ body {
   gap: 1rem;
 }
 
+/* Logo image */
 .logo-image {
   height: 140px;
   width: auto;
@@ -204,21 +232,26 @@ body {
   margin: 10px 0;
   border: 2px solid black;
   border-radius: 28px;
-  transition: opacity 0.3s ease, filter 0.3s ease; /* Ensure smooth transitions */
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  min-width: 200px;
 }
 
-/* Navigation button hover effects */
+/* Navigation buttons */
 .v-btn--variant-text:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Active navigation state */
 .v-btn--active {
   background: rgba(255, 255, 255, 0.1) !important;
   font-weight: 600 !important;
 }
 
-/* Transitions for route changes */
+/* Mobile menu icon */
+.mobile-menu-icon {
+  margin-right: 8px;
+}
+
+/* Route transitions */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -233,6 +266,7 @@ body {
 @media (max-width: 960px) {
   .logo-image {
     height: 120px;
+    min-width: 180px;
   }
 
   .v-btn {
@@ -241,12 +275,43 @@ body {
 }
 
 @media (max-width: 600px) {
+  .v-app-bar {
+    width: 100vw !important;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .logo-section {
+    padding-left: 8px;
+  }
+
+  .navigation-section {
+    width: 100%;
+    padding: 0;
+  }
+
+  .navigation-section .v-container {
+    padding-right: 8px !important;
+  }
+
   .logo-image {
     height: 100px;
+    min-width: 160px;
+    max-width: none;
   }
 
   .v-btn {
     font-size: 0.9rem;
+  }
+
+  .mobile-menu-icon {
+    margin-right: 8px;
+  }
+
+  .v-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
 

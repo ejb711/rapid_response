@@ -1,10 +1,13 @@
-// src/composables/useArticles.js
 import { ref } from 'vue'
-import articleData from '@/data/articles.json'
+import articlesData from '@/data/articles.json'
 
-export const useArticles = () => {
-  const articles = ref(articleData.articles)
-  
+export function useArticles() {
+  const articles = ref(articlesData.articles.map(article => ({
+    ...article,
+    // Convert the image path to the actual image URL
+    image: new URL(`../assets/carecompass/${article.imagePath}`, import.meta.url).href
+  })))
+
   return {
     articles
   }

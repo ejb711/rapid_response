@@ -1,8 +1,11 @@
-<!-- Note: Due to length, I will continue the code in my next response to ensure nothing is truncated -->
 <template>
-  <div class="care-compass">
+  <main class="care-compass">
     <!-- Hero Section -->
-    <section class="hero-section py-8">
+    <section 
+      class="hero-section py-8" 
+      role="banner"
+      aria-label="Welcome to CareCompass"
+    >
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="8" class="text-center">
@@ -15,21 +18,152 @@
       </v-container>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section pt-0 pb-6">
+    <!-- Featured Article Section -->
+    <section 
+      v-if="currentFeaturedArticle" 
+      class="featured-article py-8"
+      aria-label="Featured article"
+    >
       <v-container>
         <v-row justify="center">
+          <v-col cols="12" md="8">
+            <div 
+              class="featured-card clickable-card" 
+              @click="navigateToFeatured"
+              role="article"
+              :aria-label="`Featured article: ${currentFeaturedArticle.title}`"
+            >
+              <v-card elevation="0">
+                <v-row>
+                  <!-- Left Column - Image -->
+                  <v-col cols="12" md="6" class="pa-0">
+                    <div class="d-flex flex-column align-center justify-center bg-grey-lighten-5 fill-height pa-8">
+                      <div class="featured-icon-container">
+                        <v-img
+                          :src="currentFeaturedArticle.image"
+                          :alt="currentFeaturedArticle.imageCaption"
+                          width="300"
+                          height="225"
+                          class="featured-icon"
+                          contain
+                        >
+                          <template v-slot:placeholder>
+                            <div class="d-flex align-center justify-center fill-height">
+                              <v-progress-circular indeterminate color="error"></v-progress-circular>
+                            </div>
+                          </template>
+                        </v-img>
+                      </div>
+                      <div class="text-center mt-4">
+                        <span class="text-subtitle-1 text-medium-emphasis">{{ currentFeaturedArticle.imageCaption }}</span>
+                      </div>
+                    </div>
+                  </v-col>
+
+                  <!-- Right Column - Content -->
+                  <v-col cols="12" md="6" class="pa-0">
+                    <div class="d-flex flex-column h-100 pa-12">
+                      <div class="mb-4 d-flex align-center justify-space-between">
+                        <v-chip
+                          color="error"
+                          size="small"
+                          variant="flat"
+                          label
+                          class="text-uppercase font-weight-medium"
+                        >
+                          Featured
+                        </v-chip>
+                        
+                        <!-- Featured Article Navigation -->
+                        <div 
+                          v-if="featuredArticles.length > 1"
+                          class="navigation-controls"
+                          @click.stop.prevent
+                          role="navigation"
+                          aria-label="Featured article navigation"
+                        >
+                          <v-btn
+                            icon="mdi-chevron-left"
+                            variant="text"
+                            size="small"
+                            color="error"
+                            @click="previousFeatured"
+                            @mouseenter="stopAutoRotate"
+                            @mouseleave="startAutoRotate"
+                            aria-label="Previous featured article"
+                          ></v-btn>
+                          <span 
+                            class="text-caption mx-2"
+                            aria-live="polite"
+                          >
+                            {{ currentFeaturedIndex + 1 }} / {{ featuredArticles.length }}
+                          </span>
+                          <v-btn
+                            icon="mdi-chevron-right"
+                            variant="text"
+                            size="small"
+                            color="error"
+                            @click="nextFeatured"
+                            @mouseenter="stopAutoRotate"
+                            @mouseleave="startAutoRotate"
+                            aria-label="Next featured article"
+                          ></v-btn>
+                        </div>
+                      </div>
+
+                      <h2 class="text-h4 font-weight-bold mb-6">{{ currentFeaturedArticle.title }}</h2>
+                      
+                      <p class="text-body-1 text-medium-emphasis mb-8">{{ currentFeaturedArticle.excerpt }}</p>
+
+                      <div class="mt-auto">
+                        <v-btn
+                          color="error"
+                          size="large"
+                          variant="elevated"
+                          class="px-8 text-uppercase font-weight-bold"
+                          @click.stop="navigateToFeatured"
+                        >
+                          Read More
+                          <span class="sr-only">about {{ currentFeaturedArticle.title }}</span>
+                        </v-btn>
+                      </div>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+
+    <!-- Categories Section -->
+    <section 
+      class="categories-section py-8 bg-grey-lighten-4"
+      role="navigation"
+      aria-label="Article categories"
+    >
+      <v-container>
+        <h2 class="text-h5 font-weight-bold mb-6 text-center">Browse by Category</h2>
+        <v-row justify="center">
           <v-col cols="12">
-            <div class="d-flex flex-wrap justify-center gap-2">
+            <div 
+              class="d-flex flex-wrap justify-center gap-2"
+              role="toolbar"
+              aria-label="Category filters"
+            >
               <v-chip
                 v-for="category in categories"
-                :key="category.id"
-                :color="selectedCategory === category.id ? 'error' : undefined"
-                :variant="selectedCategory === category.id ? 'elevated' : 'outlined'"
+                :key="category"
+                :color="selectedCategory === category.toLowerCase().replace(' ', '-') ? 'error' : undefined"
+                :variant="selectedCategory === category.toLowerCase().replace(' ', '-') ? 'elevated' : 'outlined'"
                 class="ma-1 px-4"
-                @click="selectedCategory = category.id"
+                @click="selectCategory(category)"
+                :aria-pressed="selectedCategory === category.toLowerCase().replace(' ', '-')"
+                role="button"
+                tabindex="0"
               >
-                {{ category.name }}
+                {{ category }}
               </v-chip>
             </div>
           </v-col>
@@ -37,98 +171,12 @@
       </v-container>
     </section>
 
-    <!-- Featured Article Section -->
-    <section v-if="currentFeaturedArticle" class="featured-article py-8">
-      <v-container>
-        <v-row justify="center">
-          <v-col cols="12" md="10">
-            <v-card class="featured-card" elevation="0">
-              <v-row>
-                <!-- Left Column - Image -->
-                <v-col cols="12" md="6" class="pa-0">
-                  <div class="d-flex flex-column align-center justify-center bg-grey-lighten-5 fill-height pa-8">
-                    <div class="featured-icon-container">
-                      <v-img
-                        :src="currentFeaturedArticle.image"
-                        :alt="currentFeaturedArticle.imageCaption"
-                        width="400"
-                        height="300"
-                        class="featured-icon"
-                        cover
-                      >
-                        <template v-slot:placeholder>
-                          <div class="d-flex align-center justify-center fill-height">
-                            <v-progress-circular indeterminate color="error"></v-progress-circular>
-                          </div>
-                        </template>
-                      </v-img>
-                    </div>
-                    <div class="text-center mt-4">
-                      <span class="text-subtitle-1 text-medium-emphasis">{{ currentFeaturedArticle.imageCaption }}</span>
-                    </div>
-                  </div>
-                </v-col>
-
-                <!-- Right Column - Content -->
-                <v-col cols="12" md="6" class="pa-0">
-                  <div class="d-flex flex-column h-100 pa-16">
-                    <div class="mb-4 d-flex align-center justify-space-between">
-                      <v-chip
-                        color="error"
-                        size="small"
-                        variant="flat"
-                        label
-                        class="text-uppercase font-weight-medium"
-                      >
-                        Featured
-                      </v-chip>
-                      
-                      <!-- Featured Article Navigation -->
-                      <div v-if="featuredArticles.length > 1" class="d-flex align-center">
-                        <v-btn
-                          icon="mdi-chevron-left"
-                          variant="text"
-                          size="small"
-                          color="error"
-                          @click="previousFeatured"
-                        ></v-btn>
-                        <span class="text-caption mx-2">{{ currentFeaturedIndex + 1 }} / {{ featuredArticles.length }}</span>
-                        <v-btn
-                          icon="mdi-chevron-right"
-                          variant="text"
-                          size="small"
-                          color="error"
-                          @click="nextFeatured"
-                        ></v-btn>
-                      </div>
-                    </div>
-
-                    <h2 class="text-h4 font-weight-bold mb-6">{{ currentFeaturedArticle.title }}</h2>
-                    
-                    <p class="text-body-1 text-medium-emphasis mb-8">{{ currentFeaturedArticle.excerpt }}</p>
-
-                    <div class="mt-auto">
-                      <v-btn
-                        color="error"
-                        size="large"
-                        variant="elevated"
-                        :to="currentFeaturedArticle.link"
-                        class="px-8 text-uppercase font-weight-bold"
-                      >
-                        Read More
-                      </v-btn>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-
     <!-- Articles Grid -->
-    <section class="articles-grid py-12">
+    <section 
+      class="articles-grid py-12"
+      role="feed"
+      aria-label="Article list"
+    >
       <v-container>
         <v-row>
           <v-col
@@ -138,56 +186,76 @@
             sm="6"
             md="4"
           >
-            <v-card class="article-card rounded-lg" elevation="0">
-              <!-- Article Image -->
-              <div class="article-image-wrapper bg-grey-lighten-5 pa-12">
-                <v-img
-                  :src="article.image"
-                  :alt="article.imageCaption"
-                  height="120"
-                  contain
-                  class="mb-4"
-                >
-                  <template v-slot:placeholder>
-                    <div class="d-flex align-center justify-center fill-height">
-                      <v-progress-circular indeterminate color="error"></v-progress-circular>
-                    </div>
-                  </template>
-                </v-img>
-                <div class="text-center">
-                  <span class="text-subtitle-1 text-medium-emphasis">{{ article.imageCaption }}</span>
-                </div>
-              </div>
-
-              <!-- Article Content -->
-              <div class="article-content px-6 py-4">
-                <div class="d-flex gap-2 mb-4">
-                  <v-chip
-                    color="error"
-                    variant="outlined"
-                    size="small"
-                    label
-                    class="font-weight-medium"
+            <div 
+              class="article-card rounded-lg clickable-card" 
+              @click="() => navigateToArticle(article)"
+              role="article"
+              :aria-label="article.title"
+            >
+              <v-card elevation="0">
+                <!-- Article Image -->
+                <div class="article-image-wrapper bg-grey-lighten-5 pa-12">
+                  <v-img
+                    :src="article.image"
+                    :alt="article.imageCaption"
+                    height="120"
+                    contain
+                    class="mb-4"
                   >
-                    {{ article.category }}
-                  </v-chip>
-                  <span class="text-caption text-medium-emphasis pt-1">{{ article.date }}</span>
+                    <template v-slot:placeholder>
+                      <div class="d-flex align-center justify-center fill-height">
+                        <v-progress-circular indeterminate color="error"></v-progress-circular>
+                      </div>
+                    </template>
+                  </v-img>
+                  <div class="text-center">
+                    <span class="text-subtitle-1 text-medium-emphasis">{{ article.imageCaption }}</span>
+                  </div>
                 </div>
 
-                <h3 class="text-h6 font-weight-bold mb-3 text-truncate-2">{{ article.title }}</h3>
-                
-                <p class="text-body-2 text-medium-emphasis mb-4 text-truncate-3">{{ article.excerpt }}</p>
+                <!-- Article Content -->
+                <div class="article-content px-6 py-4">
+                  <div class="d-flex gap-2 mb-4">
+                    <v-chip
+                      v-if="article.featured"
+                      color="error"
+                      variant="flat"
+                      size="small"
+                      label
+                      class="font-weight-medium"
+                    >
+                      Featured
+                    </v-chip>
+                    <v-chip
+                      color="error"
+                      variant="outlined"
+                      size="small"
+                      label
+                      class="font-weight-medium"
+                    >
+                      {{ article.category }}
+                    </v-chip>
+                    <time class="text-caption text-medium-emphasis pt-1" :datetime="formatDateISO(article.date)">
+                      {{ article.date }}
+                    </time>
+                  </div>
 
-                <v-btn
-                  variant="text"
-                  color="error"
-                  :to="article.link"
-                  class="px-0 text-none font-weight-bold"
-                >
-                  READ MORE
-                </v-btn>
-              </div>
-            </v-card>
+                  <h3 class="text-h6 font-weight-bold mb-3 text-truncate-2">{{ article.title }}</h3>
+                  
+                  <p class="text-body-2 text-medium-emphasis mb-4 text-truncate-3">{{ article.excerpt }}</p>
+
+                  <v-btn
+                    variant="text"
+                    color="error"
+                    class="px-0 text-none font-weight-bold"
+                    @click.stop="() => navigateToArticle(article)"
+                  >
+                    READ MORE
+                    <span class="sr-only">about {{ article.title }}</span>
+                  </v-btn>
+                </div>
+              </v-card>
+            </div>
           </v-col>
         </v-row>
 
@@ -199,20 +267,25 @@
               variant="outlined"
               @click="loadMore"
               :loading="loading"
+              :disabled="loading"
               class="px-6"
+              aria-label="Load more articles"
             >
-              Load More Articles
+              {{ loading ? 'Loading more articles...' : 'Load More Articles' }}
             </v-btn>
           </v-col>
         </v-row>
       </v-container>
     </section>
-  </div>
+  </main>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 import { useArticles } from '@/composables/useArticles'
+
+const router = useRouter()
 
 // Get articles from composable
 const { articles: articlesList } = useArticles()
@@ -225,14 +298,11 @@ const itemsPerPage = 6
 const currentFeaturedIndex = ref(0)
 let autoRotateInterval = null
 
-// Categories
-const categories = [
-  { id: 'all', name: 'All Articles' },
-  { id: 'urgent-care', name: 'Urgent Care' },
-  { id: 'health-tips', name: 'Health Tips' },
-  { id: 'wellness', name: 'Wellness' },
-  { id: 'family-health', name: 'Family Health' },
-]
+// Dynamic Categories
+const categories = computed(() => {
+  const uniqueCategories = new Set(articlesList.value.map(article => article.category))
+  return ['All Articles', ...Array.from(uniqueCategories)].sort()
+})
 
 // Featured Articles
 const featuredArticles = computed(() => 
@@ -256,38 +326,62 @@ const previousFeatured = () => {
 
 // Auto-rotate featured articles
 const startAutoRotate = () => {
-  autoRotateInterval = setInterval(() => {
-    if (featuredArticles.value.length > 1) {
+  stopAutoRotate() // Clear any existing interval
+  if (featuredArticles.value.length > 1) {
+    autoRotateInterval = setInterval(() => {
       nextFeatured()
-    }
-  }, 10000) // Rotate every 10 seconds
+    }, 5000) // Rotate every 5 seconds
+  }
 }
 
 const stopAutoRotate = () => {
   if (autoRotateInterval) {
     clearInterval(autoRotateInterval)
+    autoRotateInterval = null
   }
 }
 
-// Regular Articles
+// Navigation methods
+const navigateToFeatured = (event) => {
+  // Check if click originated from navigation controls
+  if (!event.target.closest('.navigation-controls')) {
+    router.push(currentFeaturedArticle.value.link)
+  }
+}
+
+const navigateToArticle = (article) => {
+  router.push(article.link)
+}
+
+// Category selection
+const selectCategory = (category) => {
+  selectedCategory.value = category.toLowerCase().replace(' ', '-')
+  page.value = 1 // Reset pagination
+}
+
+// Format date for datetime attribute
+const formatDateISO = (dateStr) => {
+  const date = new Date(dateStr)
+  return date.toISOString().split('T')[0]
+}
+
+// Regular Articles (now includes featured articles)
 const displayedArticles = computed(() => {
-  let filtered = selectedCategory.value && selectedCategory.value !== 'all'
+  let filtered = selectedCategory.value && selectedCategory.value !== 'all-articles'
     ? articlesList.value.filter(article => 
-        article.category.toLowerCase().replace(' ', '-') === selectedCategory.value &&
-        !article.featured
+        article.category.toLowerCase().replace(' ', '-') === selectedCategory.value
       )
-    : articlesList.value.filter(article => !article.featured)
+    : articlesList.value
 
   return filtered.slice(0, page.value * itemsPerPage)
 })
 
 const hasMoreArticles = computed(() => {
-  const filtered = selectedCategory.value && selectedCategory.value !== 'all'
+  const filtered = selectedCategory.value && selectedCategory.value !== 'all-articles'
     ? articlesList.value.filter(article => 
-        article.category.toLowerCase().replace(' ', '-') === selectedCategory.value &&
-        !article.featured
+        article.category.toLowerCase().replace(' ', '-') === selectedCategory.value
       )
-    : articlesList.value.filter(article => !article.featured)
+    : articlesList.value
   return displayedArticles.value.length < filtered.length
 })
 
@@ -314,10 +408,6 @@ const loadMore = async () => {
   background: linear-gradient(to right, var(--v-background-base), var(--v-surface-base));
 }
 
-.categories-section {
-  margin-top: -1rem;
-}
-
 .featured-card {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 16px;
@@ -325,8 +415,8 @@ const loadMore = async () => {
 }
 
 .featured-icon-container {
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 225px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -342,11 +432,16 @@ const loadMore = async () => {
 
 .article-card {
   border: 1px solid rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.article-card:hover {
+.clickable-card {
+  cursor: pointer;
+}
+
+.clickable-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .article-image-wrapper {
@@ -373,11 +468,36 @@ const loadMore = async () => {
   text-overflow: ellipsis;
 }
 
+.navigation-controls {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--v-error-base);
+  outline-offset: 2px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 960px) {
   .featured-icon-container {
-    width: 320px;
-    height: 240px;
+    width: 240px;
+    height: 180px;
   }
 
   .pa-16 {
@@ -391,8 +511,8 @@ const loadMore = async () => {
 
 @media (max-width: 600px) {
   .featured-icon-container {
-    width: 280px;
-    height: 210px;
+    width: 210px;
+    height: 158px;
   }
 
   .text-h2 {

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Light blue background -->
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="#E6F3FF"/>
+  
+  <!-- Heartbeat line -->
+  <path d="M5 16 
+           L10 16 
+           L12 9 
+           L16 23 
+           L20 16 
+           L27 16" 
+        stroke="#C41E3A" 
+        stroke-width="1.5" 
+        fill="none" 
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Thin black border -->
+  <rect x="1" y="1" width="30" height="30" rx="5" 
+        fill="none" 
+        stroke="black" 
+        stroke-width="0.5"/>
+</svg>

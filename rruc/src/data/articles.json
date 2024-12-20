@@ -1,15 +1,37 @@
 {
-    "articles": [
-      {
-        "id": 1,
-        "title": "Understanding Virtual Healthcare: A Complete Guide",
-        "excerpt": "Learn how virtual healthcare is transforming the way we access medical services and what this means for you and your family. Discover the benefits, limitations, and best practices for telehealth appointments.",
-        "category": "Health Tips",
-        "date": "Dec 5, 2023",
-        "image": "/src/assets/carecompass/virtual-visit.jpg",
-        "imageCaption": "Virtual Healthcare",
-        "link": "/articles/virtual-healthcare-guide",
-        "featured": true
-      }
-    ]
-  }
+  "articles": [
+    {
+      "id": 1,
+      "title": "Understanding Virtual Healthcare: A Complete Guide",
+      "excerpt": "Learn how virtual healthcare is transforming the way we access medical services...",
+      "category": "Health Tips",
+      "date": "Dec 5, 2024",
+      "imagePath": "virtual-visit.jpg",
+      "imageCaption": "Virtual Healthcare",
+      "link": "/articles/virtual-healthcare-guide",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Bird Flu",
+      "excerpt": "First presumptive positive case of H5N1 bird flu detected in Louisiana patient...",
+      "category": "Public Health",
+      "date": "Dec 16, 2024",
+      "imagePath": "bird-flu.jpg",
+      "imageCaption": "Bird Flu: How It's Spread (CDC)",
+      "link": "/articles/h5n1",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Health Alert: Highly Pathogenic Avian Influenza A(H5N1)",
+      "excerpt": "First confirmed case of H5 virus infection to experience severe illness in the United States...",
+      "category": "Health Alerts",
+      "date": "Dec 17, 2024",
+      "imagePath": "sick_chicken.webp",
+      "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
+      "link": "/articles/HAN_BirdFlu",
+      "featured": false
+    }
+  ]
+}

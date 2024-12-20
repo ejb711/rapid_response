@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rrurgentcare.com/</loc>
+        <changefreq>weekly</changefreq>
+    <priority>1</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/services</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/about</loc>
+        <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/contact</loc>
+        <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/carecompass</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/virtual-visit/learn-more</loc>
+        <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/privacy</loc>
+        <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/accessibility</loc>
+        <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/terms</loc>
+        <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/articles/virtual-healthcare-guide</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2024-12-05</lastmod>
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/articles/h5n1</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2024-12-16</lastmod>
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/articles/HAN_BirdFlu</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-12-17</lastmod>
+  </url>
+</urlset>

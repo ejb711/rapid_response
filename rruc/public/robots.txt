@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of error pages
+Disallow: /404
+
+# Point to sitemap
+Sitemap: https://rrurgentcare.com/sitemap.xml
+
+# Add reasonable crawl delay to prevent overwhelming server
+Crawl-delay: 10
