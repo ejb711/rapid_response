@@ -130,7 +130,7 @@ onUnmounted(() => {
 .coming-soon-banner {
   background-color: #8B0000 !important;
   position: fixed;
-  top: 140px;
+  top: 180px;
   left: 0;
   width: 100%;
   z-index: 999;
