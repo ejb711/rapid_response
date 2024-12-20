@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { trackPageView } from '../analytics'
 
 const routes = [
   {
@@ -101,6 +102,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Healthcare Services'
   next()
+})
+
+router.afterEach((to) => {
+  // Track page views
+  trackPageView(to.meta.title || 'Healthcare Services', to.path)
 })
 
 export default router
