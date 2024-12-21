@@ -40,6 +40,46 @@
             >
               {{ item.title }}
             </v-btn>
+            
+            <v-menu open-on-hover>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  v-bind="props"
+                  variant="text"
+                  color="white"
+                  class="font-weight-medium text-none px-5"
+                  style="letter-spacing: 0.5px; font-size: 1.2rem;"
+                >
+                  MORE
+                  <v-icon right>mdi-chevron-down</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item
+                  :href="portalUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-weight-medium"
+                >
+                  <v-list-item-title>PATIENT PORTAL</v-list-item-title>
+                </v-list-item>
+                <v-list-item
+                  to="/contact"
+                  :active="route.path === '/contact'"
+                  class="font-weight-medium"
+                >
+                  <v-list-item-title>CONTACT</v-list-item-title>
+                </v-list-item>
+                <v-list-item
+                  to="/about"
+                  :active="route.path === '/about'"
+                  class="font-weight-medium"
+                >
+                  <v-list-item-title>ABOUT</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </div>
         </v-container>
       </div>
@@ -91,13 +131,12 @@ import SiteFooter from '@/components/footer/SiteFooter.vue'
 const BANNER_TEXT = 'Urgent Care - Opening Soon!'
 const drawer = ref(false)
 const route = useRoute()
+const portalUrl = 'https://patientportal.intelichart.com/'
 
 const navigationItems = [
   { title: 'HOME', to: '/' },
   { title: 'SERVICES', to: '/services' },
-  { title: 'CARE COMPASS', to: '/carecompass' },
-  { title: 'ABOUT', to: '/about' },
-  { title: 'CONTACT', to: '/contact' }
+  { title: 'CARE COMPASS', to: '/carecompass' }
 ]
 
 const isScrolled = ref(false)

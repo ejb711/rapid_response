@@ -3,7 +3,7 @@
     <v-list role="navigation">
       <!-- Navigation Links -->
       <v-list-item
-        v-for="item in navigationItems"
+        v-for="item in mainNavigationItems"
         :key="item.title"
         :to="item.to"
         :prepend-icon="item.icon"
@@ -16,8 +16,56 @@
           <span class="nav-text">{{ item.title }}</span>
         </template>
       </v-list-item>
+      
+      <v-divider
+        class="my-2"
+        role="separator"
+        aria-hidden="true"
+      ></v-divider>
 
-      <v-divider 
+      <!-- More Menu Items -->
+      <v-list-item
+        href="https://patientportal.intelichart.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        prepend-icon="mdi-account-circle"
+        title="Patient Portal"
+        class="mb-1"
+        :aria-label="'Access Patient Portal'"
+        role="menuitem"
+      >
+        <template v-slot:title>
+          <span class="nav-text">Patient Portal</span>
+        </template>
+      </v-list-item>
+
+      <v-list-item
+        to="/contact"
+        prepend-icon="mdi-email"
+        title="Contact"
+        class="mb-1"
+        aria-label="Navigate to Contact"
+        role="menuitem"
+      >
+        <template v-slot:title>
+          <span class="nav-text">Contact</span>
+        </template>
+      </v-list-item>
+
+      <v-list-item
+        to="/about"
+        prepend-icon="mdi-information"
+        title="About"
+        class="mb-1"
+        aria-label="Navigate to About"
+        role="menuitem"
+      >
+        <template v-slot:title>
+          <span class="nav-text">About</span>
+        </template>
+      </v-list-item>
+
+      <v-divider
         class="my-2"
         role="separator"
         aria-hidden="true"
@@ -33,7 +81,7 @@
       >
         <template v-slot:subtitle>
           <a 
-            href="tel:+19853006123" 
+            href="tel:+19853006123"
             class="text-decoration-none"
             aria-label="Call us at 985-300-6123"
           >
@@ -46,7 +94,7 @@
 </template>
 
 <script setup>
-const navigationItems = [
+const mainNavigationItems = [
   {
     title: 'Home',
     to: '/',
@@ -64,18 +112,6 @@ const navigationItems = [
     to: '/carecompass',
     icon: 'mdi-compass-outline',
     description: 'Navigate your healthcare journey'
-  },
-  {
-    title: 'About',
-    to: '/about',
-    icon: 'mdi-information',
-    description: 'Learn about our organization'
-  },
-  {
-    title: 'Contact',
-    to: '/contact',
-    icon: 'mdi-email',
-    description: 'Get in touch with us'
   }
 ]
 </script>

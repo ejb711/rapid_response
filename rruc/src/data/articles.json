@@ -20,7 +20,7 @@
       "imagePath": "bird-flu.jpg",
       "imageCaption": "Bird Flu: How It's Spread (CDC)",
       "link": "/articles/h5n1",
-      "featured": true
+      "featured": false
     },
     {
       "id": 3,
@@ -32,6 +32,17 @@
       "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
       "link": "/articles/HAN_BirdFlu",
       "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Health Alert: Highly Pathogenic Avian Influenza A(H5N1)",
+      "excerpt": "Essential USDA guidelines for hunters on Highly Pathogenic Avian Influenza (HPAI). Learn about proper handling, cleaning, and safety measures.",
+      "category": "Public Health",
+      "date": "Dec 21, 2024",
+      "imagePath": "duck_hunter.jpg",
+      "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
+      "link": "/articles/HPAI_DuckHunter",
+      "featured": true
     }
   ]
 }

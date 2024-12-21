@@ -63,13 +63,19 @@
   <url>
     <loc>https://rrurgentcare.com/articles/h5n1</loc>
         <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
     <lastmod>2024-12-16</lastmod>
   </url>
   <url>
     <loc>https://rrurgentcare.com/articles/HAN_BirdFlu</loc>
         <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2024-12-17</lastmod>
+  </url>
+  <url>
+    <loc>https://rrurgentcare.com/articles/HPAI_DuckHunter</loc>
+        <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
     <lastmod>2024-12-17</lastmod>
   </url>
 </urlset>

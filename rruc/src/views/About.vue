@@ -26,6 +26,8 @@
               cover
               height="400"
               role="img"
+              loading="eager"
+              fetchpriority="high"
             >
               <template v-slot:placeholder>
                 <v-row
@@ -63,13 +65,23 @@
               Who We Are &amp; Our Journey
             </h2>
             <div itemprop="description">
-              <p class="text-body-1 mb-6">
+              <p class="text-body-1 mb-4">
                 Welcome to Rapid Response Urgent Care - where your neighborhood's health is our priority!
+              </p>
+              
+              <p class="text-body-1 mb-4">
                 We're your local healthcare team, proudly serving this community with the expertise that comes from years of emergency medical experience. Our founder's extensive background in emergency care means you're getting top-notch medical attention from a team that truly knows what they're doing.
+              </p>
+              
+              <p class="text-body-1 mb-4">
                 Need care fast? We've got you covered! Stop by for a walk-in visit, schedule an appointment that fits your busy life, or connect with us virtually from the comfort of your home. We're here to make getting quality healthcare as easy as possible.
+              </p>
+              
+              <p class="text-body-1 mb-4">
                 At Rapid Response, we believe everyone deserves convenient access to great medical care. That's why we've built a practice that puts you first - with friendly, experienced providers who take the time to listen and understand your needs. No long waits, no hassle - just professional, personalized care when you need it most.
               </p>
-              <p class="text-body-1">
+              
+              <p class="text-body-1 mb-6">
                 Come experience the difference at Rapid Response Urgent Care, where we're not just treating patients - we're taking care of neighbors.
               </p>
             </div>
@@ -84,7 +96,7 @@
             md="4"
             role="listitem"
           >
-            <v-card height="100%">
+            <v-card height="100%" hover>
               <v-card-item>
                 <div class="d-flex align-center mb-4">
                   <v-icon
@@ -111,7 +123,7 @@
       </v-container>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section with 4 columns -->
     <section 
       class="team py-16"
       aria-labelledby="team-title"
@@ -123,61 +135,70 @@
         >
           Meet Our Team
         </h2>
-        <v-row role="list" aria-label="Team Members">
+        <v-row role="list" aria-label="Team Members" class="team-grid">
           <v-col 
             v-for="(member, index) in teamMembers" 
             :key="member.name"
             cols="12"
-            md="4"
+            sm="6"
+            md="3"
+            class="team-member-col"
             role="listitem"
           >
-            <v-card class="text-center">
-              <div 
-                class="staff-image-container"
-                role="img"
-                :aria-label="`Profile photo of ${member.name}`"
+            <v-hover v-slot="{ isHovering, props }">
+              <v-card 
+                v-bind="props"
+                :elevation="isHovering ? 8 : 2"
+                class="mx-auto team-card"
+                :class="{ 'on-hover': isHovering }"
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 300 300" 
-                  class="staff-placeholder"
-                  role="presentation"
-                  aria-hidden="true"
+                <div 
+                  class="staff-image-container"
+                  role="img"
+                  :aria-label="`Profile photo of ${member.name}`"
                 >
-                  <rect width="300" height="300" fill="#f0f0f0"/>
-                  <path d="
-                    M150 60 
-                    a40 40 0 0 1 0 80 
-                    a40 40 0 0 1 0 -80
-                    M110 155
-                    c-30 0 -60 25 -60 55
-                    v30
-                    h200
-                    v-30
-                    c0 -30 -30 -55 -60 -55
-                    h-80
-                    " 
-                    fill="#d0d0d0"/>
-                </svg>
-              </div>
-              <v-card-item>
-                <v-card-title 
-                  class="text-h6"
-                  :id="`team-member-${index}`"
-                >
-                  {{ member.name }}
-                </v-card-title>
-                <v-card-subtitle 
-                  class="mb-2"
-                  :aria-labelledby="`team-member-${index}`"
-                >
-                  {{ member.position }}
-                </v-card-subtitle>
-                <v-card-text :aria-labelledby="`team-member-${index}`">
-                  {{ member.description }}
-                </v-card-text>
-              </v-card-item>
-            </v-card>
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 300 300" 
+                    class="staff-placeholder"
+                    role="presentation"
+                    aria-hidden="true"
+                  >
+                    <rect width="300" height="300" fill="#f0f0f0"/>
+                    <path d="
+                      M150 60 
+                      a40 40 0 0 1 0 80 
+                      a40 40 0 0 1 0 -80
+                      M110 155
+                      c-30 0 -60 25 -60 55
+                      v30
+                      h200
+                      v-30
+                      c0 -30 -30 -55 -60 -55
+                      h-80
+                      " 
+                      fill="#d0d0d0"/>
+                  </svg>
+                </div>
+                <v-card-item>
+                  <v-card-title 
+                    class="text-h6"
+                    :id="`team-member-${index}`"
+                  >
+                    {{ member.name }}
+                  </v-card-title>
+                  <v-card-subtitle 
+                    class="mb-2"
+                    :aria-labelledby="`team-member-${index}`"
+                  >
+                    {{ member.position }}
+                  </v-card-subtitle>
+                  <v-card-text :aria-labelledby="`team-member-${index}`">
+                    {{ member.description }}
+                  </v-card-text>
+                </v-card-item>
+              </v-card>
+            </v-hover>
           </v-col>
         </v-row>
       </v-container>
@@ -289,17 +310,26 @@ onMounted(async () => {
 
 const updateMetaTags = async () => {
   const metaTags = {
+    title: 'About Rapid Response Urgent Care - Healthcare That Puts You First',
     description: 'Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Walk-ins welcome, or schedule appointments online.',
-    keywords: 'urgent care, healthcare, medical services, walk-in clinic, virtual healthcare, medical team',
+    keywords: 'urgent care, healthcare, medical services, walk-in clinic, virtual healthcare, medical team, emergency care',
     author: 'Rapid Response Urgent Care',
     'og:title': 'About Rapid Response Urgent Care - Healthcare That Puts You First',
     'og:description': 'Local healthcare team providing accessible, quality medical care with walk-in and virtual options.',
     'og:type': 'website',
     'og:image': girlThroatImage,
-    'twitter:card': 'summary_large_image'
+    'og:site_name': 'Rapid Response Urgent Care',
+    'twitter:card': 'summary_large_image',
+    'twitter:title': 'About Rapid Response Urgent Care',
+    'twitter:description': 'Local healthcare team providing accessible, quality medical care with walk-in and virtual options.',
+    'twitter:image': girlThroatImage
   };
 
   Object.entries(metaTags).forEach(([name, content]) => {
+    if (name === 'title') {
+      document.title = content;
+      return;
+    }
     const meta = document.createElement('meta');
     if (name.startsWith('og:')) {
       meta.setAttribute('property', name);
@@ -328,7 +358,13 @@ const structuredData = {
       "name": "Virtual Care",
       "description": "Remote healthcare consultations"
     }
-  ]
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
+  },
+  "openingHours": "Mo-Su",
+  "hasMap": "true"
 };
 
 const injectStructuredData = async () => {
@@ -363,20 +399,60 @@ const injectStructuredData = async () => {
   background-color: var(--v-grey-lighten-4);
 }
 
-.team .v-card {
-  margin-bottom: 24px;
+.team-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.team-member-col {
+  display: flex;
+  justify-content: center;
+}
+
+.team-card {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card.on-hover {
+  transform: translateY(-8px);
 }
 
 .staff-image-container {
-  height: 300px;
+  height: 200px;
   width: 100%;
   overflow: hidden;
+  padding: 16px;
+  background-color: var(--v-surface-variant);
 }
 
 .staff-placeholder {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.team-card.on-hover .staff-placeholder {
+  transform: scale(1.05);
+}
+
+@media (max-width: 960px) {
+  .team-member-col {
+    width: 50%;
+  }
+  
+  .team-card {
+    max-width: 240px;
+  }
+
+  .staff-image-container {
+    height: 180px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -386,6 +462,18 @@ const injectStructuredData = async () => {
   
   .hero-image {
     margin-top: 24px;
+  }
+
+  .team-member-col {
+    width: 100%;
+  }
+
+  .staff-image-container {
+    height: 160px;
+  }
+  
+  .team-card {
+    max-width: 220px;
   }
 }
 
@@ -398,13 +486,25 @@ const injectStructuredData = async () => {
   .bg-grey-lighten-4 {
     background-color: #ffffff !important;
   }
+
+  .staff-image-container {
+    border: 2px solid #000000;
+  }
 }
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
+  .team-card,
+  .staff-placeholder {
     transition: none !important;
+  }
+
+  .team-card.on-hover {
+    transform: none !important;
+  }
+
+  .team-card.on-hover .staff-placeholder {
+    transform: none !important;
   }
 }
 </style>
