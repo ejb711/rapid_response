@@ -1,25 +1,48 @@
+# src/views/articles/_article.vue
 <template>
-  <div>
-    <component :is="ArticleComponent" v-if="ArticleComponent" />
-    <NotFound v-else />
+  <div class="article-wrapper">
+    <Suspense>
+      <template #default>
+        <keep-alive>
+          <component 
+            :is="articleComponent" 
+            v-if="articleComponent"
+            v-bind="$attrs"
+          />
+          <NotFound v-else />
+        </keep-alive>
+      </template>
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </Suspense>
   </div>
 </template>
 
 <script setup>
-import { shallowRef, onMounted } from 'vue'
+import { ref, shallowRef, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import NotFound from '../NotFound.vue'
 
+defineOptions({
+  inheritAttrs: false
+})
+
 const route = useRoute()
-const ArticleComponent = shallowRef(null)
+const articleComponent = shallowRef(null)
 
 onMounted(async () => {
   try {
-    const importedComponent = (await import(`./content/${route.params.articleSlug}.vue`)).default
-    ArticleComponent.value = importedComponent
+    const importedComponent = await import(`./content/${route.params.articleSlug}.vue`)
+    articleComponent.value = importedComponent.default
   } catch (e) {
-    // If the component isn't found, show the NotFound component
-    ArticleComponent.value = null
+    articleComponent.value = null
   }
 })
 </script>
+
+<style scoped>
+.article-wrapper {
+  width: 100%;
+}
+</style>

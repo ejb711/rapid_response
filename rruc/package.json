@@ -5,24 +5,29 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node sitemap-generator.js && vite build",
+    "build": "vite build",
     "preview": "vite preview",
+    "serve": "vite preview",
     "generate-sitemap": "node sitemap-generator.js"
   },
   "dependencies": {
-    "@mdi/font": "^7.3.67",
+    "@mdi/font": "^7.4.47",
     "@vueuse/head": "^2.0.0",
-    "firebase": "^11.1.0",
-    "prettier": "^3.4.2",
+    "dompurify": "^3.2.3",
     "vue": "^3.3.0",
-    "vue-meta": "^3.0.0-alpha.2",
-    "vue-router": "^4.2.0",
-    "vuetify": "^3.4.0",
-    "xml2js": "^0.6.2"
+    "vue-router": "^4.5.0",
+    "vuetify": "^3.4.0"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.0",
     "@vitejs/plugin-vue": "^4.5.0",
+    "critters": "^0.0.24",
+    "cross-env": "^7.0.3",
+    "dompurify": "^3.2.3",
+    "prettier": "^3.4.2",
+    "sass-embedded": "^1.83.0",
     "vite": "^5.0.0",
-    "vite-plugin-vuetify": "^2.0.0"
+    "vite-plugin-vuetify": "^2.0.0",
+    "xml2js": "^0.6.2"
   }
 }

@@ -1,0 +1,19 @@
+// File: src/styles/settings.scss
+@forward 'vuetify/settings' with (
+  $color-pack: true
+);
+
+$theme-colors: (
+  'header-color': #8B0000,
+  'primary': #8B0000,
+  'secondary': #4A4A4A,
+  'background': #FAFAFA,
+  'surface': #FFFFFF,
+  'text-primary': #2E2E2E,
+  'text-secondary': #555555,
+  'border-color': #E0E0E0,
+  'error': #C62828,
+  'info': #1565C0,
+  'success': #2E7D32,
+  'warning': #F9A825
+);

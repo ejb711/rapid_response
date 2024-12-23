@@ -30,18 +30,18 @@
       "date": "Dec 17, 2024",
       "imagePath": "sick_chicken.webp",
       "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
-      "link": "/articles/HAN_BirdFlu",
+      "link": "/articles/han-bird-flu",
       "featured": false
     },
     {
       "id": 3,
-      "title": "Health Alert: Highly Pathogenic Avian Influenza A(H5N1)",
+      "title": "Bird Flu Safety Guidelines for Hunters",
       "excerpt": "Essential USDA guidelines for hunters on Highly Pathogenic Avian Influenza (HPAI). Learn about proper handling, cleaning, and safety measures.",
       "category": "Public Health",
       "date": "Dec 21, 2024",
       "imagePath": "duck_hunter.jpg",
       "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
-      "link": "/articles/HPAI_DuckHunter",
+      "link": "/articles/hpai-duck-hunter",
       "featured": true
     }
   ]
