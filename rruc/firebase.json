@@ -8,21 +8,6 @@
     ],
     "rewrites": [
       {
-        "source": "/articles/hpai-duck-hunter",
-        "destination": "/articles/HPAI_DuckHunter/index.html"
-      },
-      {
-        "source": "/articles/virtual-healthcare-guide",
-        "destination": "/articles/virtual-healthcare-guide/index.html"
-      },{
-        "source": "/articles/h5n1",
-        "destination": "/articles/h5n1/index.html"
-      },
-      {
-        "source": "/articles/han-bird-flu",
-        "destination": "/articles/han-bird-flu/index.html"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }

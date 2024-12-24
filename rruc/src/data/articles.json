@@ -34,7 +34,7 @@
       "featured": false
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "Bird Flu Safety Guidelines for Hunters",
       "excerpt": "Essential USDA guidelines for hunters on Highly Pathogenic Avian Influenza (HPAI). Learn about proper handling, cleaning, and safety measures.",
       "category": "Public Health",
@@ -42,6 +42,17 @@
       "imagePath": "duck_hunter.jpg",
       "imageCaption": "Highly Pathogenic Avian Influenza A(H5N1)",
       "link": "/articles/hpai-duck-hunter",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "Influenza Activity Surges Across Louisiana: What You Need to Know",
+      "excerpt": "Seasonal influenza activity continues to increase significantly across Louisiana and the United States, with high levels of respiratory illness reported in multiple regions.",
+      "category": "Public Health Alert",
+      "date": "Dec 23, 2024",
+      "imagePath": "flu-map.jpg",
+      "imageCaption": "CDC FluView map showing high levels of influenza-like illness activity",
+      "link": "/articles/flu-surge",
       "featured": true
     }
   ]

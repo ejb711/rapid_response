@@ -65,6 +65,14 @@
                   <v-list-item-title>PATIENT PORTAL</v-list-item-title>
                 </v-list-item>
                 <v-list-item
+                  :href="webPayUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-weight-medium"
+                >
+                  <v-list-item-title>BILL PAY</v-list-item-title>
+                </v-list-item>
+                <v-list-item
                   to="/contact"
                   :active="route.path === '/contact'"
                   class="font-weight-medium"
@@ -132,6 +140,7 @@ const BANNER_TEXT = 'Urgent Care - Opening Soon!'
 const drawer = ref(false)
 const route = useRoute()
 const portalUrl = 'https://patientportal.intelichart.com/'
+const webPayUrl = 'https://rapidresponseuc.webpay.md'
 
 const navigationItems = [
   { title: 'HOME', to: '/' },
