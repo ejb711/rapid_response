@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
 import path from 'path'
 import generateSitemap from './sitemap-generator.js'
-import prerenderPlugin from './prerender.js'
 
 export default defineConfig({
   base: '/',
@@ -18,7 +17,6 @@ export default defineConfig({
       }
     }),
     vuetify({ autoImport: true }),
-    prerenderPlugin,
     {
       name: 'generate-sitemap',
       async closeBundle() {

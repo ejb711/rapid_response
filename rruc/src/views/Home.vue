@@ -300,8 +300,21 @@
       </v-container>
     </section>
 
+    <!-- Facebook Feed Section -->
+    <section
+      class="facebook-section py-12"
+      aria-labelledby="facebook-heading"
+    >
+      <v-container>
+        <h2 id="facebook-heading" class="text-h4 text-center mb-8">Follow Us on Facebook</h2>
+        <div class="facebook-widget-container">
+          <div class="sk-ww-facebook-page-posts" data-embed-id="25635747"></div>
+        </div>
+      </v-container>
+    </section>
+
     <!-- CTA Section -->
-    <section 
+    <section
       class="cta py-16"
       aria-labelledby="cta-heading"
     >
@@ -330,8 +343,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useHead } from '@vueuse/head'
+
+// Load SociableKIT Facebook widget script
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://widgets.sociablekit.com/facebook-page-posts/widget.js'
+  script.defer = true
+  document.body.appendChild(script)
+})
 import girlTissueImage from '@/assets/stock/girl_tissue.jpg'
 import feverImage from '@/assets/stock/telemed_child_with_fever.jpg'
 import clinicImage from '@/assets/stock/bp.jpg'
@@ -553,6 +574,40 @@ const services = [
 
 .weight-loss-promo {
   background: linear-gradient(to right, var(--v-background-base), var(--v-surface-base));
+}
+
+.facebook-section {
+  background-color: #f5f5f5;
+}
+
+.facebook-widget-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sk-ww-facebook-page-posts {
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .facebook-widget-container {
+    max-width: 100%;
+    margin: 0 1rem;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .facebook-widget-container {
+    margin: 0;
+    border-radius: 0;
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {

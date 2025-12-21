@@ -13,9 +13,9 @@ const __dirname = dirname(__filename)
 const staticUrls = [
   { url: '/', changefreq: 'weekly', priority: 1.0 },
   { url: '/services', changefreq: 'weekly', priority: 0.9 },
+  { url: '/weightloss', changefreq: 'weekly', priority: 0.9 },
   { url: '/about', changefreq: 'monthly', priority: 0.8 },
   { url: '/contact', changefreq: 'monthly', priority: 0.7 },
-  { url: '/carecompass', changefreq: 'weekly', priority: 0.8 },
   { url: '/virtual-visit/learn-more', changefreq: 'monthly', priority: 0.8 },
   { url: '/privacy', changefreq: 'yearly', priority: 0.5 },
   { url: '/accessibility', changefreq: 'yearly', priority: 0.5 },
@@ -24,21 +24,7 @@ const staticUrls = [
 
 const generateSitemap = async () => {
   try {
-    // Path to src/data/articles.json
-    const articlesDataPath = path.join(__dirname, 'src', 'data', 'articles.json')
-    const articlesDataContent = await fs.readFile(articlesDataPath, 'utf-8')
-    const articlesData = JSON.parse(articlesDataContent)
-
-    // Convert articles to sitemap format
-    const articleUrls = articlesData.articles.map(article => ({
-      url: article.link.startsWith('/') ? article.link : `/${article.link}`,
-      changefreq: 'weekly',
-      priority: article.featured ? 0.9 : 0.8,
-      lastmod: new Date(article.date).toISOString().split('T')[0]
-    }))
-
-    // Combine static and article URLs
-    const allUrls = [...staticUrls, ...articleUrls]
+    const allUrls = staticUrls
 
     // Generate sitemap XML using xml2js
     const urlset = {
