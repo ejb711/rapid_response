@@ -1,3 +1,8 @@
+<!--
+  Filename: WeightLoss.vue
+  Purpose: Medical weight loss program page with Tirzepatide/Semaglutide pricing
+  Last Updated: December 21, 2024
+-->
 <template>
   <main class="weight-loss">
     <!-- Hero Section -->
@@ -20,7 +25,7 @@
             <v-card class="pa-4 bg-primary-lighten-5">
               <p class="text-h6 mb-2">To Schedule an Appointment:</p>
               <p class="text-body-1">Call <strong>985-300-6123</strong></p>
-              <p class="text-body-1">Monday - Friday: 8:00 AM - 4:00 PM</p>
+              <p class="text-body-1">Monday - Friday: 8:00 AM - 5:30 PM</p>
             </v-card>
           </v-col>
           <v-col cols="12" md="6">
@@ -55,64 +60,110 @@
         <!-- Tirzepatide Card -->
         <v-col cols="12" md="6">
           <v-card class="h-100 pa-6">
-            <h3 class="text-h5 mb-4">Tirzepatide (Generic Mounjaro)</h3>
+            <h3 class="text-h5 mb-4">Tirzepatide 16.75 mg/ml</h3>
+            <p class="text-body-2 text-grey mb-4">(Generic Mounjaro)</p>
             <p class="text-body-1 mb-4">
-              Recent clinical research has shown this advanced medication achieves superior weight loss results through its unique dual-action approach, targeting both GLP-1 and GIP hormones. A comprehensive study of over 18,000 patients demonstrated consistently higher success rates compared to alternative treatments.
+              This advanced medication achieves superior weight loss results through its unique dual-action approach, targeting both GLP-1 and GIP hormones. Clinical studies show 82% of patients achieve at least 5% weight loss, with many reaching 15% or more.
             </p>
-            <h4 class="text-h6 mb-2">Clinical Results & Benefits:</h4>
-            <v-list>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Greater Weight Loss Success</v-list-item-title>
-                <v-list-item-subtitle class="wrapping-subtitle">82% of patients achieve at least 5% weight loss</v-list-item-subtitle>
-                <v-list-item-subtitle class="wrapping-subtitle">Many reach 15% or more</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Faster Results</v-list-item-title>
-                <v-list-item-subtitle>Shows significantly higher weight loss at 3, 6, and 12 months compared to alternatives</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Powerful Dual Action</v-list-item-title>
-                <v-list-item-subtitle>Works through two different mechanisms for enhanced effectiveness</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Proven Effectiveness</v-list-item-title>
-                <v-list-item-subtitle>Clinical studies show superior results both with and without diabetes</v-list-item-subtitle>
-              </v-list-item>
-            </v-list>
-            <v-divider class="my-4"></v-divider>
-            <p class="text-body-1 font-weight-bold">
-              Medication starting at $190/month
-            </p>
+            <v-table density="compact" class="mb-4">
+              <thead>
+                <tr>
+                  <th>Dose</th>
+                  <th>Weeks of Medication</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2.5 mg</td>
+                  <td>4 weeks</td>
+                  <td>$260</td>
+                </tr>
+                <tr>
+                  <td>5 mg</td>
+                  <td>5 weeks</td>
+                  <td>$300</td>
+                </tr>
+                <tr>
+                  <td>7.5 mg</td>
+                  <td>5 weeks</td>
+                  <td>$320</td>
+                </tr>
+                <tr>
+                  <td>10 mg</td>
+                  <td>5 weeks</td>
+                  <td>$355</td>
+                </tr>
+                <tr>
+                  <td>12.5 mg</td>
+                  <td>4 weeks</td>
+                  <td>$365</td>
+                </tr>
+                <tr>
+                  <td>15 mg</td>
+                  <td>4 weeks</td>
+                  <td>$375</td>
+                </tr>
+              </tbody>
+            </v-table>
           </v-card>
         </v-col>
 
         <!-- Semaglutide Card -->
         <v-col cols="12" md="6">
           <v-card class="h-100 pa-6">
-            <h3 class="text-h5 mb-4">Semaglutide (Generic Ozempic)</h3>
+            <h3 class="text-h5 mb-4">Semaglutide 2.65 mg/ml</h3>
+            <p class="text-body-2 text-grey mb-4">(Generic Ozempic)</p>
             <p class="text-body-1 mb-4">
-              A well-established medication that focuses specifically on GLP-1 receptors, offering proven weight loss benefits. Clinical studies show it provides consistent, steady weight loss results when combined with lifestyle changes.
+              A well-established medication that focuses specifically on GLP-1 receptors, offering proven weight loss benefits. Clinical studies show 66.5% of patients achieve 5% or more weight loss with consistent, steady results.
             </p>
-            <h4 class="text-h6 mb-2">Clinical Results & Benefits:</h4>
-            <v-list>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Reliable Weight Loss</v-list-item-title>
-                <v-list-item-subtitle>66.5% of patients achieve 5% or more weight loss with consistent results</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Gradual, Steady Progress</v-list-item-title>
-                <v-list-item-subtitle>Provides consistent results over time with proven long-term effectiveness</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title class="font-weight-bold">Well-Tolerated</v-list-item-title>
-                <v-list-item-subtitle>Long history of use with established safety profile</v-list-item-subtitle>
-              </v-list-item>
-            </v-list>
-            <v-divider class="my-4"></v-divider>
-            <p class="text-body-1 font-weight-bold">
-              Medication starting at $145/month or less
-            </p>
+            <v-table density="compact" class="mb-4">
+              <thead>
+                <tr>
+                  <th>Dose</th>
+                  <th>Weeks of Medication</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0.25 mg</td>
+                  <td>6 weeks</td>
+                  <td>$200</td>
+                </tr>
+                <tr>
+                  <td>0.5 mg</td>
+                  <td>5 weeks</td>
+                  <td>$220</td>
+                </tr>
+                <tr>
+                  <td>1 mg</td>
+                  <td>4 weeks</td>
+                  <td>$235</td>
+                </tr>
+                <tr>
+                  <td>1.7 mg</td>
+                  <td>5 weeks</td>
+                  <td>$245</td>
+                </tr>
+                <tr>
+                  <td>2.4 mg</td>
+                  <td>4 weeks</td>
+                  <td>$255</td>
+                </tr>
+              </tbody>
+            </v-table>
           </v-card>
+        </v-col>
+      </v-row>
+
+      <!-- Pricing Footnotes -->
+      <v-row class="mt-4">
+        <v-col cols="12">
+          <p class="text-body-2 text-grey text-center">
+            *Prices include medication, supplies, 1-2 day cold-chain shipping, and visit cost.<br>
+            *Doses can be adjusted and tailored for desired results.
+          </p>
         </v-col>
       </v-row>
 
@@ -196,8 +247,8 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Our Program (Starting Cost)</td>
-                    <td>$145 (or less) - $190 per month + visit</td>
+                    <td>Our Program</td>
+                    <td>$200 - $375 (all-inclusive)*</td>
                   </tr>
                   <tr>
                     <td>Nutrisystem</td>
@@ -213,6 +264,7 @@
                   </tr>
                 </tbody>
               </v-table>
+              <p class="text-body-2 text-grey mt-2">*Includes medication, supplies, shipping, and visit</p>
             </v-card>
           </v-col>
         </v-row>
@@ -534,7 +586,7 @@
             <v-card class="pa-6 text-center">
               <p class="text-h5 mb-2">Call to Schedule Your Consultation</p>
               <p class="text-h4 mb-2"><strong>985-300-6123</strong></p>
-              <p class="text-body-1">Monday - Friday: 8:00 AM - 4:00 PM</p>
+              <p class="text-body-1">Monday - Friday: 8:00 AM - 5:30 PM</p>
             </v-card>
           </v-col>
         </v-row>

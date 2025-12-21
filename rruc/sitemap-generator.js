@@ -14,6 +14,7 @@ const staticUrls = [
   { url: '/', changefreq: 'weekly', priority: 1.0 },
   { url: '/services', changefreq: 'weekly', priority: 0.9 },
   { url: '/weightloss', changefreq: 'weekly', priority: 0.9 },
+  { url: '/news', changefreq: 'weekly', priority: 0.8 },
   { url: '/about', changefreq: 'monthly', priority: 0.8 },
   { url: '/contact', changefreq: 'monthly', priority: 0.7 },
   { url: '/virtual-visit/learn-more', changefreq: 'monthly', priority: 0.8 },

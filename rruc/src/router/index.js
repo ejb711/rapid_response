@@ -72,6 +72,12 @@ const routes = [
     component: () => import('../views/WeightLoss.vue'),
     meta: { title: 'Weight Loss Services' }
   },
+  {
+    path: '/news',
+    name: 'News',
+    component: () => import('../views/News.vue'),
+    meta: { title: 'News & Updates - Rapid Response Urgent Care' }
+  },
 ]
 
 const router = createRouter({

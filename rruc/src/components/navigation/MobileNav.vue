@@ -113,6 +113,12 @@ const mainNavigationItems = [
     description: 'View our medical services'
   },
   {
+    title: 'News',
+    to: '/news',
+    icon: 'mdi-newspaper',
+    description: 'Latest news and updates'
+  },
+  {
     title: 'Schedule Online',
     href: 'https://www.clockwisemd.com/hospitals/15568/visits/new',
     icon: 'mdi-clock-check-outline',

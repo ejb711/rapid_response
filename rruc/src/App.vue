@@ -148,10 +148,11 @@ const primaryNavItems = [
   { title: 'HOME', to: '/' },
   { title: 'URGENT CARE SERVICES', to: '/services' },
   { title: 'WEIGHT LOSS', to: '/weightloss' },
-  { 
+  { title: 'NEWS', to: '/news' },
+  {
     title: 'SCHEDULE',
     to: 'https://www.clockwisemd.com/hospitals/15568/visits/new',
-    external: true 
+    external: true
   }
 ]
 
