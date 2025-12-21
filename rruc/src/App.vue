@@ -1,54 +1,74 @@
 <template>
   <v-app>
-    <!-- App Bar -->
+    <!-- App Bar - Fixed position header with scroll effect -->
     <v-app-bar
       :class="{ 'navbar-scrolled': isScrolled }"
       elevation="1"
       height="180"
       class="navbar-container"
     >
-      <div class="logo-section">
-        <router-link to="/" class="text-decoration-none d-flex align-center">
-          <img
-            src="/src/assets/logo.png"
-            alt="Rapid Response Urgent Care Logo"
-            class="logo-image"
-          />
-        </router-link>
-      </div>
+      <!-- Main container for logo and navigation -->
+      <div class="header-content">
+        <!-- Logo Section - Flush Left -->
+        <div class="logo-section">
+          <router-link to="/" class="text-decoration-none d-flex align-center">
+            <img
+              src="/src/assets/logo.png"
+              alt="Rapid Response Urgent Care Logo"
+              class="logo-image"
+            />
+          </router-link>
+        </div>
 
-      <div class="navigation-section">
-        <v-container fluid class="d-flex align-center px-4">
-          <v-spacer></v-spacer>
-          
-          <v-app-bar-nav-icon
-            @click="drawer = !drawer"
-            color="white"
-            class="d-flex d-md-none mobile-menu-icon"
-          ></v-app-bar-nav-icon>
+        <!-- Mobile Menu Icon - Show on small screens and tablets -->
+        <v-app-bar-nav-icon
+          @click="drawer = !drawer"
+          color="white"
+          class="d-flex d-lg-none mobile-menu-icon"
+          aria-label="Toggle navigation menu"
+        ></v-app-bar-nav-icon>
 
-          <div class="d-none d-md-flex align-center gap-4">
-            <v-btn
-              v-for="item in navigationItems"
-              :key="item.to"
-              :to="item.to"
-              :active="route.path === item.to"
-              variant="text"
-              color="white"
-              class="font-weight-medium text-none px-5"
-              style="letter-spacing: 0.5px; font-size: 1.2rem;"
+        <!-- Desktop Navigation Section - Flush Right -->
+        <div class="navigation-section d-none d-lg-flex">
+          <!-- Primary Navigation Items -->
+          <div class="nav-links">
+            <template v-for="item in primaryNavItems" :key="item.to">
+              <v-btn
+                v-if="!item.external"
+                :to="item.to"
+                :active="route.path === item.to"
+                variant="text"
+                color="white"
+                class="nav-btn"
+              >
+                {{ item.title }}
+              </v-btn>
+              <v-btn
+                v-else
+                :href="item.to"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="text"
+                color="white"
+                class="nav-btn"
+              >
+                {{ item.title }}
+              </v-btn>
+            </template>
+
+            <!-- More Dropdown Menu -->
+            <v-menu 
+              open-on-hover 
+              transition="scale-transition"
+              :close-on-content-click="true"
+              offset="5"
             >
-              {{ item.title }}
-            </v-btn>
-            
-            <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
                 <v-btn
                   v-bind="props"
                   variant="text"
                   color="white"
-                  class="font-weight-medium text-none px-5"
-                  style="letter-spacing: 0.5px; font-size: 1.2rem;"
+                  class="nav-btn"
                 >
                   MORE
                   <v-icon right>mdi-chevron-down</v-icon>
@@ -56,65 +76,44 @@
               </template>
 
               <v-list>
-                <v-list-item
-                  :href="portalUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="font-weight-medium"
-                >
-                  <v-list-item-title>PATIENT PORTAL</v-list-item-title>
-                </v-list-item>
-                <v-list-item
-                  :href="webPayUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="font-weight-medium"
-                >
-                  <v-list-item-title>BILL PAY</v-list-item-title>
-                </v-list-item>
-                <v-list-item
-                  to="/contact"
-                  :active="route.path === '/contact'"
-                  class="font-weight-medium"
-                >
-                  <v-list-item-title>CONTACT</v-list-item-title>
-                </v-list-item>
-                <v-list-item
-                  to="/about"
-                  :active="route.path === '/about'"
-                  class="font-weight-medium"
-                >
-                  <v-list-item-title>ABOUT</v-list-item-title>
-                </v-list-item>
+                <template v-for="item in secondaryNavItems" :key="item.to">
+                  <v-list-item
+                    v-if="item.external"
+                    :href="item.to"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-list-item"
+                  >
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                    v-else
+                    :to="item.to"
+                    :active="route.path === item.to"
+                    class="nav-list-item"
+                  >
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                </template>
               </v-list>
             </v-menu>
           </div>
-        </v-container>
+        </div>
       </div>
     </v-app-bar>
 
-    <!-- Coming Soon Banner -->
-    <section class="coming-soon-banner py-3">
-      <v-container fluid>
-        <div class="d-flex align-center justify-center gap-4">
-          <v-icon icon="mdi-hospital-building" color="white" />
-          <p class="text-white mb-0">
-            {{ BANNER_TEXT }}
-          </p>
-        </div>
-      </v-container>
-    </section>
-
-    <!-- Navigation Drawer -->
+    <!-- Mobile/Tablet Navigation Drawer -->
     <v-navigation-drawer
       v-model="drawer"
       temporary
       location="left"
+      width="300"
+      class="navigation-drawer"
     >
-      <mobile-nav @navigate="handleNavigation" />
+      <mobile-nav @navigate="closeDrawer" />
     </v-navigation-drawer>
 
-    <!-- Main Content -->
+    <!-- Main Content Area -->
     <v-main>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -136,28 +135,48 @@ import { useRoute } from 'vue-router'
 import MobileNav from '@/components/navigation/MobileNav.vue'
 import SiteFooter from '@/components/footer/SiteFooter.vue'
 
-const BANNER_TEXT = 'Urgent Care - Opening Soon!'
-const drawer = ref(false)
-const route = useRoute()
+// External URLs for navigation links
 const portalUrl = 'https://patientportal.intelichart.com/'
 const webPayUrl = 'https://rapidresponseuc.webpay.md'
+const route = useRoute()
 
-const navigationItems = [
+// State management for mobile drawer
+const drawer = ref(false)
+
+// Primary navigation items that are always visible on desktop
+const primaryNavItems = [
   { title: 'HOME', to: '/' },
-  { title: 'SERVICES', to: '/services' },
-  { title: 'CARE COMPASS', to: '/carecompass' }
+  { title: 'URGENT CARE SERVICES', to: '/services' },
+  { title: 'WEIGHT LOSS', to: '/weightloss' },
+  { 
+    title: 'SCHEDULE',
+    to: 'https://www.clockwisemd.com/hospitals/15568/visits/new',
+    external: true 
+  }
 ]
 
+// Secondary navigation items that appear in the More dropdown
+const secondaryNavItems = [
+  { title: 'CARE COMPASS', to: '/carecompass' },
+  { title: 'PATIENT PORTAL', to: portalUrl, external: true },
+  { title: 'BILL PAY', to: webPayUrl, external: true },
+  { title: 'CONTACT', to: '/contact' },
+  { title: 'ABOUT', to: '/about' }
+]
+
+// Scroll handling for navbar transparency effect
 const isScrolled = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 }
 
-const handleNavigation = () => {
+// Close mobile drawer after navigation
+const closeDrawer = () => {
   drawer.value = false
 }
 
+// Lifecycle hooks for scroll event management
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
 })
@@ -168,23 +187,17 @@ onUnmounted(() => {
 </script>
 
 <style>
+/* Root variables for consistent spacing and sizing */
 :root {
   --content-max-width: 1440px;
   --section-padding: 2rem;
   --border-radius: 8px;
+  --header-height-desktop: 180px;
+  --header-height-tablet: 160px;
+  --header-height-mobile: 140px;
 }
 
-/* Coming Soon Banner */
-.coming-soon-banner {
-  background-color: #8B0000 !important;
-  position: fixed;
-  top: 180px;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-}
-
-/* Base styles */
+/* Base styles for body and layout */
 body {
   margin: 0;
   padding: 0;
@@ -207,29 +220,12 @@ body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-  margin-top: calc(140px + 48px);
+  margin-top: var(--header-height-desktop);
   padding-top: 1rem;
 }
 
-/* Footer */
-.v-footer {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100vw;
-}
-
-/* Container */
-.v-container {
-  max-width: var(--content-max-width);
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Navbar styles */
+/* Navbar container styles */
 .navbar-container {
-  display: flex;
-  align-items: center;
-  padding: 0 !important;
   background-color: #8B0000 !important;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   position: fixed !important;
@@ -240,38 +236,31 @@ body {
   z-index: 1000;
 }
 
+/* Header content wrapper */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 1.5rem;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Navbar scroll effect */
 .navbar-scrolled {
   background-color: rgba(139, 0, 0, 0.87) !important;
   backdrop-filter: blur(10px) !important;
 }
 
-.navbar-scrolled .logo-image {
-  opacity: 0.925;
-  filter: blur(0px);
-  transition: opacity 0.3s ease, filter 0.3s ease;
-}
-
-/* Logo section */
+/* Logo section styles */
 .logo-section {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-left: 16px;
 }
 
-/* Navigation section */
-.navigation-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-/* Logo image */
 .logo-image {
   height: 140px;
   width: auto;
@@ -280,26 +269,52 @@ body {
   margin: 10px 0;
   border: 2px solid black;
   border-radius: 28px;
-  transition: opacity 0.3s ease, filter 0.3s ease;
-  min-width: 200px;
+  transition: opacity 0.3s ease;
 }
 
-/* Navigation buttons */
-.v-btn--variant-text:hover {
+/* Navigation section styles */
+.navigation-section {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Navigation button styles */
+.nav-btn {
+  font-size: 1rem !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 500 !important;
+  padding: 0 1rem !important;
+  height: 48px !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
-.v-btn--active {
+.nav-btn.v-btn--active {
   background: rgba(255, 255, 255, 0.1) !important;
   font-weight: 600 !important;
 }
 
-/* Mobile menu icon */
-.mobile-menu-icon {
-  margin-right: 8px;
+/* Dropdown menu items */
+.nav-list-item {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  min-height: 44px;
 }
 
-/* Route transitions */
+/* Route transition animations */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -310,64 +325,76 @@ body {
   opacity: 0;
 }
 
-/* Responsive styles */
-@media (max-width: 960px) {
-  .logo-image {
-    height: 120px;
-    min-width: 180px;
+/* Navigation drawer styles */
+.navigation-drawer {
+  background-color: white;
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 1280px) {
+  .header-content {
+    padding: 0 2rem;
   }
 
-  .v-btn {
-    font-size: 1rem;
+  .nav-btn {
+    padding: 0 1.25rem !important;
   }
 }
 
-@media (max-width: 600px) {
-  .v-app-bar {
-    width: 100vw !important;
-    max-width: 100%;
-    left: 0;
-    right: 0;
-  }
-
-  .logo-section {
-    padding-left: 8px;
-  }
-
-  .navigation-section {
-    width: 100%;
-    padding: 0;
-  }
-
-  .navigation-section .v-container {
-    padding-right: 8px !important;
+/* Responsive styles for medium-large screens */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-btn {
+    font-size: 0.9rem !important;
+    padding: 0 0.75rem !important;
   }
 
   .logo-image {
-    height: 100px;
-    min-width: 160px;
-    max-width: none;
+    height: 120px;
+  }
+}
+
+/* Responsive styles for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-content {
+    padding: 0 1rem;
   }
 
-  .v-btn {
-    font-size: 0.9rem;
+  .logo-image {
+    height: 110px;
   }
 
-  .mobile-menu-icon {
-    margin-right: 8px;
+  .v-app-bar {
+    height: var(--header-height-tablet) !important;
   }
 
-  .v-container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+  .v-main {
+    margin-top: var(--header-height-tablet);
+  }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 767px) {
+  .header-content {
+    padding: 0 0.75rem;
+  }
+
+  .logo-image {
+    height: 90px;
+  }
+
+  .v-app-bar {
+    height: var(--header-height-mobile) !important;
+  }
+
+  .v-main {
+    margin-top: var(--header-height-mobile);
   }
 }
 
 /* Print styles */
 @media print {
   .v-app-bar,
-  .v-footer,
-  .no-print {
+  .v-footer {
     display: none !important;
   }
 }

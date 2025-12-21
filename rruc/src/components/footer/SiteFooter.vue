@@ -52,7 +52,7 @@
                 class="text-white text-decoration-none"
                 aria-label="Visit our location at 609 Brashear Avenue, Morgan City, Louisiana 70830 (opens in new tab)"
               >
-                609 Brashear Ave., Morgan City, LA 70830
+                609 Brashear Ave., Morgan City, LA 70380
               </a>
             </div>
           </address>

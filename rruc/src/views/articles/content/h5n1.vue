@@ -4,19 +4,26 @@
       <v-container class="article-container py-1" style="height: 100%; overflow: hidden;">
         <v-row justify="center" style="height: 100%; overflow-y: auto;">
           <v-col cols="12" md="10" lg="8">
-            <article itemscope itemtype="https://schema.org/NewsArticle">
-              <div class="text-center mb-16">
+            <!-- Header with Nav Button and Alert -->
+            <div class="d-flex align-center justify-space-between mb-8">
+              <ArticleNavButton />
+              <div>
                 <v-chip
                   color="primary"
                   variant="outlined"
-                  class="mb-6"
                   size="large"
                   role="status"
                   aria-label="Public Health Alert"
                 >
                   Public Health Alert
                 </v-chip>
-                
+              </div>
+            </div>
+
+            <!-- Article Content -->
+            <article itemscope itemtype="https://schema.org/NewsArticle">
+              <!-- Title Section -->
+              <div class="text-center mb-16">
                 <h1 
                   class="text-h2 font-weight-bold mb-4"
                   itemprop="headline"
@@ -33,6 +40,7 @@
                 </time>
               </div>
 
+              <!-- Main Image -->
               <v-img
                 :src="birdFluImage"
                 height="45vh"
@@ -59,6 +67,7 @@
                 </template>
               </v-img>
 
+              <!-- Description -->
               <p 
                 class="text-caption text-center mb-16 font-italic"
                 itemprop="description"
@@ -66,10 +75,12 @@
                 The Louisiana Department of Health (LDH) released a statement on December 13, 2024, indicating the first presumptive positive human case of highly pathogenic avian influenza (HPAI), or H5N1, in southwestern Louisiana. The patient is reportedly hospitalized and had exposure to sick or dead birds.
               </p>
               
+              <!-- Intro Paragraph -->
               <p class="text-h5 font-weight-regular mb-16 text-grey-darken-2">
                 This development marks a significant milestone for public health in Louisiana. According to LDH and the CDC, H5N1 bird flu has been circulating among wild birds and poultry in various parts of the country. While human infections are rare, the agency's statement underscores the need for vigilance and preventive measures, particularly for those who work with or handle birds.
               </p>
 
+              <!-- Key Facts Card -->
               <v-card 
                 class="mb-16 bg-red-lighten-5" 
                 elevation="2"
@@ -107,6 +118,7 @@
                 </v-card-text>
               </v-card>
 
+              <!-- Article Sections -->
               <section 
                 class="mb-16"
                 aria-labelledby="understanding-title"
@@ -194,6 +206,9 @@
                 </nav>
               </section>
             </article>
+
+            <!-- Bottom Navigation Button -->
+            <ArticleNavButton class="mt-8" />
           </v-col>
         </v-row>
       </v-container>
@@ -204,6 +219,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import birdFluImage from '@/assets/carecompass/bird-flu.jpg';
+import ArticleNavButton from '@/components/ArticleNavButton.vue';
 
 // SEO Meta Tags
 onMounted(() => {

@@ -17,8 +17,20 @@
             <p class="text-body-1 mb-6">
               Delivering accessible, high-quality healthcare through both in-person and virtual solutions. We accept walk-ins or you can reserve and schedule appointments online. Our mission is to make healthcare more convenient and personalized for everyone.
             </p>
+            <v-btn
+                variant="outlined"
+                size="large"
+                color="primary"
+                href="https://www.clockwisemd.com/hospitals/15568/visits/new"
+                target="_blank"
+                rel="noopener"
+                prepend-icon="mdi-calendar"
+                aria-label="Schedule an in-person visit"
+              >
+                Schedule In-Person Visit
+              </v-btn>
           </v-col>
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="6" class="d-flex justify-center">
             <v-img
               :src="girlTissueImage"
               alt="Healthcare provider examining patient tissue sample"
@@ -48,6 +60,64 @@
       </v-container>
     </section>
 
+<!-- Weight Loss Services Section -->
+<section 
+  class="weight-loss-promo py-12"
+  aria-labelledby="weight-loss-heading"
+>
+  <v-container>
+    <v-row align="center">
+      <v-col cols="12" md="6" order="2" order-md="1">
+        <v-img
+          :src="weightLossLettersImage"
+          alt="Medical weight loss success stories"
+          class="rounded-lg"
+          height="400"
+          cover
+          role="img"
+        >
+          <template v-slot:placeholder>
+            <v-row
+              class="fill-height ma-0"
+              align="center"
+              justify="center"
+              role="status"
+              aria-label="Loading image"
+            >
+              <v-progress-circular
+                indeterminate
+                color="primary"
+                aria-label="Loading"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </v-col>
+      
+      <v-col cols="12" md="6" order="1" order-md="2">
+        <h2 
+          id="weight-loss-heading" 
+          class="text-h2 font-weight-bold mb-4"
+        >
+          Transform Your Life with Medical Weight Loss
+        </h2>
+        <p class="text-body-1 mb-6">
+          Experience breakthrough weight loss with FDA-approved medications and personalized medical supervision. Our program combines the latest advancements in weight loss medication with ongoing support to help you achieve lasting results.
+        </p>
+        <v-btn
+          size="large"
+          color="primary"
+          :to="{ path: '/weightloss' }"
+          prepend-icon="mdi-arrow-right"
+          class="text-none"
+        >
+          Our Weight Loss Services
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</section>
+
     <!-- Location Section -->
     <section 
       class="location-section py-8 bg-grey-lighten-4" 
@@ -57,13 +127,15 @@
         <v-row align="center">
           <v-col cols="12" sm="12" md="6">
             <div class="location-info pa-4">
-              <h2 id="location-heading" class="text-h4 mb-4">Opening Soon in Morgan City!</h2>
+              <h2 id="location-heading" class="text-h4 mb-4"><b>Now Open</b> in Morgan City!</h2>
               <address class="text-h6">
                 <p>609 Brashear Ave</p>
                 <p class="text-body-1 text-grey">Next to CORE Physical Therapy</p>
-                <p class="text-body-1 text-grey">Across from Danny's Fried Chicken</p>
+                <p class="text-body-1 text-grey">Down the street from the Spirit of Morgan City Shrimp Boat</p>
                 <p class="text-body-1 mt-4">Hours of Operation:</p>
                 <p class="text-body-1 text-grey mb-4">Monday - Friday: 8:00 AM - 4:00 PM</p>
+                <p class="text-body-1 mt-4">Phone:</p>
+                <p class="text-body-1 text-grey mb-4">985-300-6123</p>
               </address>
               <v-btn
                 variant="outlined"
@@ -91,6 +163,52 @@
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
               />
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+
+    <!-- In-Person Visit Section -->
+    <section 
+      class="in-person-section py-12"
+      aria-labelledby="in-person-heading"
+    >
+      <v-container fluid>
+        <v-row align="center">
+          <v-col cols="12" sm="12" md="6">
+            <v-img
+              :src="clinicImage"
+              alt="Medical clinic examination room"
+              class="in-person-image"
+              cover
+              rounded="lg"
+              role="img"
+              aria-label="In-person visit illustration"
+            />
+          </v-col>
+          <v-col cols="12" sm="12" md="6">
+            <div class="d-flex align-center flex-wrap gap-4 mb-4">
+              <h2 id="in-person-heading" class="text-h2 font-weight-bold">
+                Healthcare When You Need It
+              </h2>
+            </div>
+            <p class="text-body-1 mb-6">
+              Get immediate medical attention for non-emergency conditions. <b>Walk in</b> today, no appointment needed. Or, with the convenience of <b>virtual check-in</b>, skip the physical waiting room - we'll notify you when it's your turn.
+            </p>
+            <div class="d-flex gap-4">
+              <v-btn
+                variant="outlined"
+                size="large"
+                color="primary"
+                href="https://www.clockwisemd.com/hospitals/15568/visits/new"
+                target="_blank"
+                rel="noopener"
+                prepend-icon="mdi-calendar"
+                aria-label="Schedule an in-person visit"
+              >
+                Schedule In-Person Visit
+              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -216,13 +334,15 @@ import { ref } from 'vue'
 import { useHead } from '@vueuse/head'
 import girlTissueImage from '@/assets/stock/girl_tissue.jpg'
 import feverImage from '@/assets/stock/telemed_child_with_fever.jpg'
+import clinicImage from '@/assets/stock/bp.jpg'
+import weightLossLettersImage from '@/assets/stock/weightloss/weightLossLetters.jpg'
 
 useHead({
   title: 'Rapid Response Urgent Care - Morgan City, LA | Healthcare That Puts You First',
   meta: [
     {
       name: 'description',
-      content: 'Opening soon in Morgan City! Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Located at 609 Brashear Ave. Open Monday-Friday 8am-4pm.'
+      content: 'Open Now in Morgan City! Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Located at 609 Brashear Ave. Open Monday-Friday 8am-4pm.'
     },
     {
       name: 'keywords',
@@ -234,7 +354,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Opening soon in Morgan City! Quick medical attention and virtual visits for non-emergency conditions. Open Monday-Friday 8am-4pm.'
+      content: 'Open now in Morgan City! Quick medical attention and virtual visits for non-emergency conditions. Open Monday-Friday 8am-4pm.'
     },
     {
       property: 'og:type',
@@ -309,6 +429,10 @@ const services = [
 }
 
 .hero-image {
+  width: 25%;
+  max-width: 50%;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -333,6 +457,12 @@ const services = [
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.in-person-image {
+  width: 75%;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
 .map-container {
   width: 100%;
   height: 400px;
@@ -347,6 +477,10 @@ const services = [
 
 .coming-soon-chip {
   animation: pulse 2s infinite;
+}
+
+.in-person-section {
+  background-color: var(--v-background-base);
 }
 
 @keyframes pulse {
@@ -397,7 +531,8 @@ const services = [
   }
 
   .telemedicine-section,
-  .location-section {
+  .location-section,
+  .in-person-section {
     text-align: center;
     padding: 4rem 0;
   }
@@ -409,5 +544,21 @@ const services = [
   .coming-soon-chip {
     margin: 0 auto;
   }
+
+  .in-person-image {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
 }
+
+.weight-loss-promo {
+  background: linear-gradient(to right, var(--v-background-base), var(--v-surface-base));
+}
+
+@media (max-width: 600px) {
+  .weight-loss-promo {
+    text-align: center;
+  }
+}
+
 </style>

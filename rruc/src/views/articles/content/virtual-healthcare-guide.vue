@@ -4,20 +4,25 @@
       <v-container class="article-container py-12">
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
-            <article itemscope itemtype="https://schema.org/Article">
-              <!-- Article Header -->
-              <div class="text-center mb-16">
+            <!-- Navigation and Category Header -->
+            <div class="d-flex align-center justify-space-between mb-8">
+              <ArticleNavButton />
+              <div>
                 <v-chip
                   color="primary"
                   variant="outlined"
-                  class="mb-6"
                   size="large"
                   role="status"
                   aria-label="Article Category: Healthcare Innovation"
                 >
                   Healthcare Innovation
                 </v-chip>
-                
+              </div>
+            </div>
+
+            <article itemscope itemtype="https://schema.org/Article">
+              <!-- Article Header -->
+              <div class="text-center mb-16">
                 <h1 
                   class="text-h2 font-weight-bold mb-4"
                   itemprop="headline"
@@ -186,6 +191,9 @@
                 </section>
               </div>
             </article>
+
+            <!-- Bottom Navigation Button -->
+            <ArticleNavButton class="mt-8" />
           </v-col>
         </v-row>
       </v-container>
@@ -196,6 +204,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import virtualVisitImage from '@/assets/carecompass/virtual-visit.jpg';
+import ArticleNavButton from '@/components/ArticleNavButton.vue';
 
 // SEO Meta Tags
 onMounted(() => {

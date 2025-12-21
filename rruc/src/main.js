@@ -3,6 +3,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { createHead } from '@vueuse/head'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 
@@ -12,6 +14,8 @@ import 'vuetify/styles'
 
 const app = createApp(App)
 const head = createHead()
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 const vuetify = createVuetify({
  components,
@@ -62,4 +66,5 @@ if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
 app.use(router)
 app.use(vuetify)
 app.use(head)
+app.use(pinia)
 app.mount('#app')

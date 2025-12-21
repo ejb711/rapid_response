@@ -1,9 +1,10 @@
-// HPAI_DuckHunter.vue
+# hpai-duck-hunter.vue
 <script setup>
 import { ref, markRaw } from 'vue'
 import { useHead } from '@vueuse/head'
 import { useRouter } from 'vue-router'
 import birdFluImage from '@/assets/carecompass/duck_hunter.jpg'
+import ArticleNavButton from '@/components/ArticleNavButton.vue'
 
 const router = markRaw(useRouter())
 const imageAltText = ref("Hunters safely process game birds with protective gear")
@@ -140,21 +141,26 @@ useHead({
       <v-container class="article-container py-12">
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
-            <!-- ARTICLE START -->
-            <article itemscope itemtype="https://schema.org/Article">
-              <!-- ARTICLE HEADER -->
-              <div class="text-center mb-16">
+            <!-- Navigation and Category Header -->
+            <div class="d-flex align-center justify-space-between mb-8">
+              <ArticleNavButton />
+              <div>
                 <v-chip
                   color="primary"
                   variant="outlined"
-                  class="mb-6"
                   size="large"
                   role="status"
                   aria-label="Article Category: Wildlife Health Advisory"
                 >
                   Wildlife Health Advisory
                 </v-chip>
+              </div>
+            </div>
 
+            <!-- ARTICLE START -->
+            <article itemscope itemtype="https://schema.org/Article">
+              <!-- ARTICLE HEADER -->
+              <div class="text-center mb-16">
                 <h1
                   class="text-h2 font-weight-bold mb-4"
                   itemprop="headline"
@@ -371,8 +377,9 @@ useHead({
 
               <!-- RESOURCES SECTION -->
               <section 
-                class="mb-16"
-                aria-labelledby="resources-title">
+              class="mb-16"
+                aria-labelledby="resources-title"
+              >
                 <h2 
                   id="resources-title"
                   class="text-h3 font-weight-bold mb-6"
@@ -481,10 +488,11 @@ useHead({
                     </div>
                   </v-card-text>
                 </v-card>
-
               </section>
             </article>
-            <!-- ARTICLE END -->
+
+            <!-- Bottom Navigation Button -->
+            <ArticleNavButton class="mt-8" />
           </v-col>
         </v-row>
       </v-container>

@@ -1,7 +1,6 @@
 <template>
   <nav aria-label="Main navigation">
     <v-list role="navigation">
-      <!-- Navigation Links -->
       <v-list-item
         v-for="item in mainNavigationItems"
         :key="item.title"
@@ -16,7 +15,7 @@
           <span class="nav-text">{{ item.title }}</span>
         </template>
       </v-list-item>
-      
+
       <v-divider
         class="my-2"
         role="separator"
@@ -102,10 +101,22 @@ const mainNavigationItems = [
     description: 'Return to homepage'
   },
   {
-    title: 'Services',
+    title: 'Weight Loss',
+    to: '/weightloss',
+    icon: 'mdi-scale-bathroom',
+    description: 'Weight loss services'
+  },
+  {
+    title: 'Urgent Care Services',
     to: '/services',
     icon: 'mdi-medical-bag',
     description: 'View our medical services'
+  },
+  {
+    title: 'Schedule Online',
+    href: 'https://didactic-memory-5gqw64r6r7xxh4vj7-5173.app.github.dev/carecompass',
+    icon: 'mdi-clock-check-outline',
+    description: 'Schedule your appointment online'
   },
   {
     title: 'Care Compass',
@@ -121,18 +132,15 @@ const mainNavigationItems = [
   min-height: 48px;
 }
 
-/* Improve focus visibility */
 .v-list-item:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
-/* Ensure sufficient color contrast */
 .nav-text {
   color: rgba(0, 0, 0, 0.87);
 }
 
-/* Improve touch target sizes for mobile */
 @media (max-width: 768px) {
   .v-list-item {
     min-height: 56px;

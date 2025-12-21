@@ -1,87 +1,37 @@
 <template>
   <div class="services">
-    <!-- Coming Soon Banner -->
-    <section class="coming-soon-banner py-3 bg-primary">
-      <v-container fluid>
-        <div class="d-flex align-center justify-center gap-4">
-          <v-icon icon="mdi-hospital-building" color="white" />
-          <p class="text-white mb-0">
-            Urgent Care Services - Coming Soon!
-          </p>
-        </div>
-      </v-container>
-    </section>
-
+    
     <!-- Hero Sections Container -->
     <section class="hero-container py-4">
       <v-container fluid>
         <v-row>
-          <!-- In Person Urgent Care Hero -->
-          <v-col cols="12" md="4" class="px-6">
+          <!-- Combined In Person & Virtual Waiting Room Hero -->
+          <v-col cols="12" md="6" class="px-6">
             <div id="urgent" class="hero-content h-100 d-flex flex-column justify-center">
               <div class="d-flex align-center flex-wrap gap-4 mb-4">
                 <h1 class="hero-title font-weight-bold">
-                  In Person Visit
+                  In Person: Walk-In or Scheduled
                 </h1>
-                <v-chip
-                  color="primary"
-                  variant="outlined"
-                  label
-                  class="coming-soon-chip"
-                >
-                  Coming Soon
-                </v-chip>
               </div>
               <p class="text-body-1 mb-6">
-                Immediate medical attention for non-emergency conditions. No appointment necessary, walk in or schedule an appointment today.
+                Get immediate medical attention for non-emergency conditions. Walk in today, no appointment needed. Or, with the convenience of virtual check-in, skip the physical waiting room - we'll notify you when it's your turn.
               </p>
               <div>
                 <v-btn
                   color="primary"
                   size="large"
                   class="bg-error"
-                  @click="showBookingDialog = true"
+                  href="https://www.clockwisemd.com/hospitals/15568/visits/new"
+                  target="_blank"
                 >
-                  Schedule Visit
-                </v-btn>
-              </div>
-            </div>
-          </v-col>
-
-          <!-- Virtual Waiting Room Hero -->
-          <v-col cols="12" md="4" class="px-6">
-            <div id="virtual-waiting" class="hero-content h-100 d-flex flex-column justify-center">
-              <div class="d-flex align-center flex-wrap gap-4 mb-4">
-                <h1 class="hero-title font-weight-bold">
-                  Virtual Waiting Room
-                </h1>
-                <v-chip
-                  color="primary"
-                  variant="outlined"
-                  label
-                  class="coming-soon-chip"
-                >
-                  Coming Soon
-                </v-chip>
-              </div>
-              <p class="text-body-1 mb-6">
-                Skip the physical waiting room. Check in virtually and we'll notify you when it's your turn to be seen. Continue your daily activities while waiting for your appointment.
-              </p>
-              <div>
-                <v-btn
-                  color="primary"
-                  size="large"
-                  class="bg-error"
-                  @click="handleCheckIn"
-                >
-                  Check In Now
+                  Schedule In-Person Visit
                 </v-btn>
               </div>
             </div>
           </v-col>
 
           <!-- Virtual Services Hero -->
-          <v-col cols="12" md="4" class="px-6">
+          <v-col cols="12" md="6" class="px-6">
             <div id="virtual-visit" class="hero-content h-100 d-flex flex-column justify-center">
               <div class="d-flex align-center flex-wrap gap-4 mb-4">
                 <h1 class="hero-title font-weight-bold">
@@ -100,14 +50,6 @@
                 High-quality care delivered directly to you. Our virtual visits connect you with experienced healthcare providers from the comfort of your home.
               </p>
               <div>
-                <v-btn
-                  color="primary"
-                  size="large"
-                  class="bg-error"
-                  @click="showBookingDialog = true"
-                >
-                  Book Appointment Now
-                </v-btn>
               </div>
             </div>
           </v-col>
@@ -244,17 +186,6 @@ import ankleSprain from '../assets/stock/ankle-sprain.jpg'
 // State
 const showBookingDialog = ref(false)
 
-// In Person Features
-const inPersonFeatures = [
-  'No appointment necessary',
-  'On-site lab testing',
-  'X-ray services',
-  'Treatment for injuries and illnesses',
-  'Occupational medicine',
-  'Sports physicals',
-  'Vaccinations'
-]
-
 // Service Features
 const serviceFeatures = [
   'Shorter wait times than emergency room',
@@ -291,10 +222,6 @@ const faqs = [
 ]
 
 // Methods
-const handleCheckIn = () => {
-  console.log('Checking in to virtual waiting room')
-}
-
 const handleBooking = (formData) => {
   console.log('Booking submitted:', formData)
   showBookingDialog.value = false

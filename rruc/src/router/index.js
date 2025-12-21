@@ -67,11 +67,24 @@ const routes = [
     meta: { title: 'Rapid Response Urgent Care: Terms of Service' }
   },
   {
+    path: '/3377396579',
+    name: '3377396579',
+    component: () => import('../views/3377396579.vue'),
+    props: true,
+    meta: { title: 'SandBox' }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('../views/NotFound.vue'),
     meta: { title: '404 - Page Not Found' }
-  }
+  },
+  {
+    path: '/weightloss',
+    name: 'weightloss',
+    component: () => import('../views/WeightLoss.vue'),
+    meta: { title: 'Weight Loss Services' }
+  },
 ]
 
 const router = createRouter({

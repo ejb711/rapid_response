@@ -54,6 +54,17 @@
       "imageCaption": "CDC FluView map showing high levels of influenza-like illness activity",
       "link": "/articles/flu-surge",
       "featured": true
+    },
+    {
+      "id": 6,
+      "title": "Coffee and Tea May Reduce Head and Neck Cancer Risk: Major Study Findings",
+      "excerpt": "Groundbreaking international study reveals significant protective effects of coffee and tea consumption against head and neck cancers. Research shows drinking more than 4 cups of coffee daily associated with 17% lower overall cancer risk.",
+      "category": "Cancer Research",
+      "date": "Dec 24, 2024",
+      "imagePath": "coffee_ca.webp",
+      "imageCaption": "Coffee consumption linked to reduced cancer risk based on comprehensive analysis",
+      "link": "/articles/tea-and-coffee-may-lower-risk-for-some-cancers",
+      "featured": true
     }
   ]
 }

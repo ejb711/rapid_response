@@ -56,7 +56,7 @@
                 ></v-icon>
                 <v-card-title>Email Us</v-card-title>
                 <v-card-text>
-                  <p class="mb-2">Support Email:</p>
+                  <p class="mb-2">Contact Email:</p>
                   <!-- Make the email clickable -->
                   <p class="font-weight-bold">
                     <a :href="'mailto:' + supportEmail">{{ supportEmail }}</a>
@@ -186,8 +186,8 @@
 import { ref, reactive } from 'vue'
 
 // Interactive data
-const phoneNumber = ref('985-300-6132')
-const supportEmail = ref('support@rrurgentcare.com')
+const phoneNumber = ref('985-300-6123')
+const supportEmail = ref('contact@rrurgentcare.com')
 
 // Form state
 const form = ref(null)

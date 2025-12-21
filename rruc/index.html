@@ -1,3 +1,9 @@
+<!-- 
+Filename: index.html
+Purpose: Main entry point for Rapid Response Urgent Care website
+Last Updated: December 24, 2024 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,28 +44,33 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "MedicalBusiness",
         "name": "Rapid Response Urgent Care",
         "url": "https://rrurgentcare.com",
         "logo": "https://rrurgentcare.com/assets/logo.png",
+        "image": "https://rrurgentcare.com/assets/logo.png",
+        "telephone": "+1-985-300-6123",
+        "priceRange": "$",
+        "currenciesAccepted": "USD",
         "sameAs": [
-          "https://www.facebook.com/people/Rapid-Response-Urgent-Care/61566987523640",
+          "https://www.facebook.com/people/Rapid-Response-Urgent-Care/61566987523640"
         ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+1-985-300-6123",
-          "contactType": "Main Office",
-          "areaServed": "US",
-          "availableLanguage": ["English"]
-        },
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "609 Brashear Ave",
           "addressLocality": "Morgan City",
           "addressRegion": "LA",
-          "postalCode": "70560",
+          "postalCode": "70380",
           "addressCountry": "US"
-        }
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "16:00"
+          }
+        ]
       }
     </script>
 
@@ -71,7 +82,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Fonts (Example) -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>

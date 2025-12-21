@@ -1,11 +1,17 @@
 User-agent: *
 Allow: /
 
-# Disallow crawling of error pages
-Disallow: /404
+# Block error pages
+Disallow: /404/
+Disallow: /error/
+Disallow: /*?error=
 
-# Point to sitemap
+# Block backend paths 
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
 Sitemap: https://rrurgentcare.com/sitemap.xml
 
-# Add reasonable crawl delay to prevent overwhelming server
-Crawl-delay: 10
+# Crawl rate control
+Crawl-delay: 5

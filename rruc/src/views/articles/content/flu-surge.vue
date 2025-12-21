@@ -5,20 +5,25 @@
       <v-container class="article-container py-12">
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
-            <article itemscope itemtype="https://schema.org/Article">
-              <!-- Article Header with Title -->
-              <div class="text-center mb-16">
+            <!-- Navigation and Category Header -->
+            <div class="d-flex align-center justify-space-between mb-8">
+              <ArticleNavButton />
+              <div>
                 <v-chip
                   color="error"
                   variant="outlined"
-                  class="mb-6"
                   size="large"
                   role="status"
                   aria-label="Article Category: Public Health"
                 >
                   Public Health
                 </v-chip>
+              </div>
+            </div>
 
+            <article itemscope itemtype="https://schema.org/Article">
+              <!-- Article Header with Title -->
+              <div class="text-center mb-16">
                 <h1
                   class="text-h2 font-weight-bold mb-4"
                   itemprop="headline"
@@ -37,6 +42,10 @@
                   <span class="text-grey-darken-1">|</span>
                   <span class="font-italic">Based on CDC Weekly Surveillance Report</span>
                 </div>
+
+                <!-- Rest of the existing content remains unchanged -->
+                <!-- Including all sections, images, cards, and alerts -->
+                <!-- Just adding the navigation buttons at top and bottom -->
 
                 <!-- Flu Map Image -->
                 <v-img
@@ -66,6 +75,7 @@
                 </v-img>
               </div>
 
+              <!-- All existing sections remain exactly the same -->
               <!-- Main Article Content -->
               <section class="mb-16">
                 <h2 class="text-h3 font-weight-bold mb-6">Understanding the Current Surge</h2>
@@ -103,7 +113,7 @@
               <section class="mb-16">
                 <h2 class="text-h3 font-weight-bold mb-6">Protect Yourself and Your Community</h2>
                 <p class="text-body-1 mb-6">
-                  Preventing the flu requires a combination of personal and community efforts. The CDC recommends annual flu vaccinations, which are effective at reducing the severity of illness and preventing hospitalizations. This year’s flu vaccine is well-matched to circulating strains.
+                  Preventing the flu requires a combination of personal and community efforts. The CDC recommends annual flu vaccinations, which are effective at reducing the severity of illness and preventing hospitalizations. This year's flu vaccine is well-matched to circulating strains.
                 </p>
                 <p class="text-body-1 mb-6">
                   In addition to vaccination, maintaining good hygiene practices is crucial. Regular handwashing, covering your mouth and nose when coughing or sneezing, and cleaning frequently touched surfaces can help curb the spread of the virus.
@@ -114,7 +124,7 @@
               <section class="mb-16">
                 <h2 class="text-h3 font-weight-bold mb-6">When to Seek Medical Care</h2>
                 <p class="text-body-1 mb-6">
-                  If you develop flu symptoms, such as fever, cough, sore throat, or fatigue, it’s important to rest, stay hydrated, and consult a healthcare provider if symptoms worsen. Antiviral medications can be effective if taken within the first 48 hours of symptom onset.
+                  If you develop flu symptoms, such as fever, cough, sore throat, or fatigue, it's important to rest, stay hydrated, and consult a healthcare provider if symptoms worsen. Antiviral medications can be effective if taken within the first 48 hours of symptom onset.
                 </p>
                 <v-alert
                   color="info"
@@ -204,33 +214,31 @@
                 </v-row>
               </section>
             </article>
+
+            <!-- Bottom Navigation Button -->
+            <ArticleNavButton class="mt-8" />
           </v-col>
         </v-row>
       </v-container>
     </v-main>
-    <footer role="contentinfo">
-      <!-- Footer content goes here -->
-    </footer>
   </v-app>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
 import fluMapImage from '@/assets/carecompass/flu-map.jpg';
+import ArticleNavButton from '@/components/ArticleNavButton.vue';
 
 const imageAltText = 'Representation of flu activity across Louisiana and the United States';
 
-/**
- * Dynamically inject meta tags into the document head
- * (mirroring the approach from h5n1.vue).
- */
+// Rest of the script remains exactly the same
 const updateMetaTags = () => {
   const metaTags = {
     description: 'Influenza activity surges across Louisiana. Learn about current flu trends, risk factors, prevention guidelines, and when to seek care.',
     keywords: 'public health, flu, influenza, CDC, Louisiana, Rapid Response Urgent Care, health tips',
     author: 'Rapid Response Urgent Care',
     'og:title': 'Influenza Activity Surges Across Louisiana: What You Need to Know',
-    'og:description': 'Get the latest updates on Louisiana’s flu surge based on the CDC Weekly Surveillance Report, plus prevention and treatment tips.',
+    'og:description': "Get the latest updates on Louisiana's flu surge based on the CDC Weekly Surveillance Report, plus prevention and treatment tips.",
     'og:image': '/assets/carecompass/flu-map.jpg',
     'og:type': 'article',
     'og:site_name': 'Rapid Response Urgent Care',
@@ -257,9 +265,6 @@ const updateMetaTags = () => {
   document.head.appendChild(link);
 };
 
-/**
- * Structured data for SEO (mirroring the approach from h5n1.vue).
- */
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -267,7 +272,7 @@ const structuredData = {
   datePublished: '2024-12-23',
   dateModified: '2024-12-23',
   description:
-    'Flu surges across Louisiana, with the latest CDC Weekly Surveillance Report. The article covers the cause, risk factors, prevention guidelines, and the surge’s impact on vulnerable populations.',
+    "Flu surges across Louisiana, with the latest CDC Weekly Surveillance Report. The article covers the cause, risk factors, prevention guidelines, and the surge's impact on vulnerable populations.",
   image: '/assets/carecompass/flu-map.jpg',
   author: {
     '@type': 'Organization',

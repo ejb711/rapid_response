@@ -135,13 +135,13 @@
         >
           Meet Our Team
         </h2>
-        <v-row role="list" aria-label="Team Members" class="team-grid">
+        <v-row role="list" aria-label="Team Members">
           <v-col 
             v-for="(member, index) in teamMembers" 
             :key="member.name"
             cols="12"
             sm="6"
-            md="3"
+            lg="3"
             class="team-member-col"
             role="listitem"
           >
@@ -176,8 +176,7 @@
                       v-30
                       c0 -30 -30 -55 -60 -55
                       h-80
-                      " 
-                      fill="#d0d0d0"/>
+                    " fill="#d0d0d0"/>
                   </svg>
                 </div>
                 <v-card-item>
@@ -395,15 +394,6 @@ const injectStructuredData = async () => {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.our-story {
-  background-color: var(--v-grey-lighten-4);
-}
-
-.team-grid {
-  display: grid;
-  gap: 24px;
-}
-
 .team-member-col {
   display: flex;
   justify-content: center;
@@ -441,17 +431,15 @@ const injectStructuredData = async () => {
   transform: scale(1.05);
 }
 
-@media (max-width: 960px) {
-  .team-member-col {
-    width: 50%;
-  }
-  
+@media (max-width: 1264px) {
   .team-card {
     max-width: 240px;
   }
+}
 
-  .staff-image-container {
-    height: 180px;
+@media (max-width: 960px) {
+  .team-card {
+    max-width: 220px;
   }
 }
 
@@ -464,16 +452,8 @@ const injectStructuredData = async () => {
     margin-top: 24px;
   }
 
-  .team-member-col {
-    width: 100%;
-  }
-
-  .staff-image-container {
-    height: 160px;
-  }
-  
   .team-card {
-    max-width: 220px;
+    max-width: 280px;
   }
 }
 
