@@ -157,8 +157,7 @@ const serviceLinks = [
 
 const companyLinks = [
   { title: 'About Us', to: '/about' },
-  { title: 'Contact', to: '/contact' },
-  { title: 'Care Compass', to: '/carecompass' }
+  { title: 'Contact', to: '/contact' }
 ]
 
 const socialLinks = [

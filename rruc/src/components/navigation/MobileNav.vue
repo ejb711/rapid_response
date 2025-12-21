@@ -114,15 +114,9 @@ const mainNavigationItems = [
   },
   {
     title: 'Schedule Online',
-    href: 'https://didactic-memory-5gqw64r6r7xxh4vj7-5173.app.github.dev/carecompass',
+    href: 'https://www.clockwisemd.com/hospitals/15568/visits/new',
     icon: 'mdi-clock-check-outline',
     description: 'Schedule your appointment online'
-  },
-  {
-    title: 'Care Compass',
-    to: '/carecompass',
-    icon: 'mdi-compass-outline',
-    description: 'Navigate your healthcare journey'
   }
 ]
 </script>

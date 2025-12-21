@@ -157,7 +157,6 @@ const primaryNavItems = [
 
 // Secondary navigation items that appear in the More dropdown
 const secondaryNavItems = [
-  { title: 'CARE COMPASS', to: '/carecompass' },
   { title: 'PATIENT PORTAL', to: portalUrl, external: true },
   { title: 'BILL PAY', to: webPayUrl, external: true },
   { title: 'CONTACT', to: '/contact' },

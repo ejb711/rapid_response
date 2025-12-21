@@ -27,23 +27,10 @@ const routes = [
     meta: { title: 'Contact Us - Healthcare Services' }
   },
   {
-    path: '/carecompass',
-    name: 'CareCompass',
-    component: () => import('../views/CareCompass.vue'),
-    meta: { title: 'Care Compass: Your guide to health news, expert insights, and wellness tips' }
-  },
-  {
     path: '/virtual-visit/learn-more',
     name: 'VirtualVisitLearnMore',
     component: () => import('../views/VirtualVisit_LearnMore.vue'),
     meta: { title: 'Virtual Visits - Learn More' }
-  },
-  {
-    path: '/articles/:articleSlug',
-    name: 'article',
-    component: () => import('../views/articles/_article.vue'),
-    props: true,
-    meta: { title: 'Article' }
   },
   {
     path: '/privacy',
