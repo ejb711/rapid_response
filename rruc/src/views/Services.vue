@@ -4,11 +4,11 @@
     <!-- Hero Sections Container -->
     <section class="hero-container py-4">
       <v-container fluid>
-        <v-row>
+        <v-row justify="center">
           <!-- Combined In Person & Virtual Waiting Room Hero -->
-          <v-col cols="12" md="6" class="px-6">
-            <div id="urgent" class="hero-content h-100 d-flex flex-column justify-center">
-              <div class="d-flex align-center flex-wrap gap-4 mb-4">
+          <v-col cols="12" md="8" class="px-6">
+            <div id="urgent" class="hero-content h-100 d-flex flex-column justify-center text-center">
+              <div class="d-flex align-center flex-wrap gap-4 mb-4 justify-center">
                 <h1 class="hero-title font-weight-bold">
                   In Person: Walk-In or Scheduled
                 </h1>
