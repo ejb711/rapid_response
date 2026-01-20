@@ -34,8 +34,8 @@
     >
       <v-container>
         <h2 id="facebook-heading" class="text-h4 text-center mb-8">Follow Us on Facebook</h2>
-        <div class="facebook-widget-container">
-          <div class="sk-ww-facebook-page-posts" data-embed-id="25635747"></div>
+        <div class="facebook-widget-container" ref="widgetContainer">
+          <div class="sk-ww-facebook-page-posts" data-embed-id="25635747" :key="widgetKey"></div>
         </div>
       </v-container>
     </section>
@@ -71,15 +71,43 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useHead } from '@vueuse/head'
 
-// Load SociableKIT Facebook widget script
+const widgetContainer = ref(null)
+const widgetKey = ref(Date.now())
+
+// Load and initialize SociableKIT Facebook widget
+// Handles both initial load and SPA navigation
+const initWidget = () => {
+  const scriptId = 'sociablekit-widget-script'
+  const existingScript = document.getElementById(scriptId)
+
+  if (existingScript) {
+    // Script already loaded - force widget reinitialization
+    // by recreating the widget element
+    widgetKey.value = Date.now()
+    nextTick(() => {
+      // Remove and re-add script to trigger widget scan
+      existingScript.remove()
+      const newScript = document.createElement('script')
+      newScript.id = scriptId
+      newScript.src = 'https://widgets.sociablekit.com/facebook-page-posts/widget.js'
+      newScript.async = true
+      document.body.appendChild(newScript)
+    })
+  } else {
+    // First load - add script normally
+    const script = document.createElement('script')
+    script.id = scriptId
+    script.src = 'https://widgets.sociablekit.com/facebook-page-posts/widget.js'
+    script.async = true
+    document.body.appendChild(script)
+  }
+}
+
 onMounted(() => {
-  const script = document.createElement('script')
-  script.src = 'https://widgets.sociablekit.com/facebook-page-posts/widget.js'
-  script.defer = true
-  document.body.appendChild(script)
+  initWidget()
 })
 
 useHead({

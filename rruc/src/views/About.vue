@@ -219,7 +219,7 @@
             </h2>
             <p class="text-body-1 mb-6">
               Feel better faster with urgent care that revolves around you.
-              <br>Walk in, schedule your in-person visit or virtual visit today and see the difference.
+              <br>Walk in or schedule your in-person visit today and see the difference.
             </p>
             <v-btn
               color="primary"

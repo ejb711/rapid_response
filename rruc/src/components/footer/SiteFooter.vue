@@ -151,8 +151,8 @@ const currentYear = computed(() => new Date().getFullYear())
 
 const serviceLinks = [
   { title: 'In Person Visit', to: '/services?section=urgent' },
-  { title: 'Virtual Waiting Room', to: '/services?section=virtual-waiting' },
-  { title: 'Virtual Visits', to: '/services?section=virtual-visit' }
+  // { title: 'Virtual Waiting Room', to: '/services?section=virtual-waiting' }, // TEMPORARILY DISABLED
+  // { title: 'Virtual Visits', to: '/services?section=virtual-visit' } // TEMPORARILY DISABLED
 ]
 
 const companyLinks = [

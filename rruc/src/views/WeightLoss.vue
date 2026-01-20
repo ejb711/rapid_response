@@ -26,6 +26,7 @@
               <p class="text-h6 mb-2">To Schedule an Appointment:</p>
               <p class="text-body-1">Call <strong>985-300-6123</strong></p>
               <p class="text-body-1">Monday - Friday: 8:00 AM - 5:30 PM</p>
+              <p class="text-body-1">Saturday: 8:00 AM - 4:00 PM</p>
             </v-card>
           </v-col>
           <v-col cols="12" md="6">
@@ -587,6 +588,7 @@
               <p class="text-h5 mb-2">Call to Schedule Your Consultation</p>
               <p class="text-h4 mb-2"><strong>985-300-6123</strong></p>
               <p class="text-body-1">Monday - Friday: 8:00 AM - 5:30 PM</p>
+              <p class="text-body-1">Saturday: 8:00 AM - 4:00 PM</p>
             </v-card>
           </v-col>
         </v-row>

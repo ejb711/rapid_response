@@ -30,7 +30,7 @@
             </div>
           </v-col>
 
-          <!-- Virtual Services Hero -->
+          <!-- Virtual Services Hero - TEMPORARILY DISABLED
           <v-col cols="12" md="6" class="px-6">
             <div id="virtual-visit" class="hero-content h-100 d-flex flex-column justify-center">
               <div class="d-flex align-center flex-wrap gap-4 mb-4">
@@ -53,6 +53,7 @@
               </div>
             </div>
           </v-col>
+          -->
         </v-row>
       </v-container>
     </section>
@@ -191,7 +192,7 @@ const serviceFeatures = [
   'Shorter wait times than emergency room',
   'Walk-in service, no appointment needed',
   "Virtual waiting room - Get a message when it's your turn to be seen",
-  'Extended virtual visit hours',
+  // 'Extended virtual visit hours', // TEMPORARILY DISABLED
   'Physical exams for work/school',
   'Lower costs than ER visits',
   'Medication prescriptions and refills',
@@ -201,8 +202,9 @@ const serviceFeatures = [
   'And more...'
 ]
 
-// FAQs
+// FAQs - Virtual visit FAQs temporarily disabled
 const faqs = [
+  /*
   {
     question: 'How do virtual visits work?',
     answer: 'Virtual visits are conducted through our secure video platform. Once you book an appointment, you\'ll receive a link to join the video call at your scheduled time.'
@@ -219,6 +221,7 @@ const faqs = [
     question: 'Can I get prescriptions through virtual visits?',
     answer: 'Yes, our providers can prescribe medications when appropriate. Prescriptions will be sent directly to your preferred pharmacy.'
   }
+  */
 ]
 
 // Methods

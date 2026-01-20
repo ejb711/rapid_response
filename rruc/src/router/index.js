@@ -26,12 +26,14 @@ const routes = [
     component: () => import('../views/Contact.vue'),
     meta: { title: 'Contact Us - Healthcare Services' }
   },
+  /* TEMPORARILY DISABLED
   {
     path: '/virtual-visit/learn-more',
     name: 'VirtualVisitLearnMore',
     component: () => import('../views/VirtualVisit_LearnMore.vue'),
     meta: { title: 'Virtual Visits - Learn More' }
   },
+  */
   {
     path: '/privacy',
     name: 'privacy',

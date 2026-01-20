@@ -138,7 +138,8 @@
                 <p class="text-body-1 text-grey">Next to CORE Physical Therapy</p>
                 <p class="text-body-1 text-grey">Down the street from the Spirit of Morgan City Shrimp Boat</p>
                 <p class="text-body-1 mt-4">Hours of Operation:</p>
-                <p class="text-body-1 text-grey mb-4">Monday - Friday: 8:00 AM - 4:00 PM</p>
+                <p class="text-body-1 text-grey">Monday - Friday: 8:00 AM - 5:30 PM</p>
+                <p class="text-body-1 text-grey mb-4">Saturday: 8:00 AM - 4:00 PM</p>
                 <p class="text-body-1 mt-4">Phone:</p>
                 <p class="text-body-1 text-grey mb-4">985-300-6123</p>
               </address>
@@ -220,8 +221,8 @@
       </v-container>
     </section>
 
-    <!-- Telemedicine Hero Section -->
-    <section 
+    <!-- Telemedicine Hero Section - TEMPORARILY DISABLED
+    <section
       class="telemedicine-section py-12"
       aria-labelledby="telemedicine-heading"
     >
@@ -272,6 +273,7 @@
         </v-row>
       </v-container>
     </section>
+    -->
 
     <!-- Services Section -->
     <section 
@@ -305,7 +307,7 @@
       </v-container>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - TEMPORARILY DISABLED
     <section
       class="cta py-16"
       aria-labelledby="cta-heading"
@@ -331,6 +333,7 @@
         </v-row>
       </v-container>
     </section>
+    -->
   </main>
 </template>
 
@@ -347,7 +350,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Open Now in Morgan City! Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Located at 609 Brashear Ave. Open Monday-Friday 8am-4pm.'
+      content: 'Open Now in Morgan City! Rapid Response Urgent Care provides accessible, high-quality healthcare through in-person and virtual solutions. Located at 609 Brashear Ave. Open Monday-Friday 8am-5:30pm, Saturday 8am-4pm.'
     },
     {
       name: 'keywords',
@@ -359,7 +362,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Open now in Morgan City! Quick medical attention and virtual visits for non-emergency conditions. Open Monday-Friday 8am-4pm.'
+      content: 'Open now in Morgan City! Quick medical attention for non-emergency conditions. Open Monday-Friday 8am-5:30pm, Saturday 8am-4pm.'
     },
     {
       property: 'og:type',
@@ -384,7 +387,7 @@ useHead({
           "addressRegion": "LA",
           "addressCountry": "US"
         },
-        "description": "Quick medical attention and virtual visits for non-emergency conditions",
+        "description": "Quick medical attention for non-emergency conditions",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -395,6 +398,12 @@ useHead({
               "Thursday",
               "Friday"
             ],
+            "opens": "08:00",
+            "closes": "17:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
             "opens": "08:00",
             "closes": "16:00"
           }

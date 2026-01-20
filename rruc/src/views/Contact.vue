@@ -10,7 +10,7 @@
               We're Here to Help
             </h1>
             <p class="text-body-1 mb-6">
-              Have questions about our healthcare services or your virtual visit? Our team is available to assist you.
+              Have questions about our healthcare services? Our team is available to assist you.
             </p>
           </v-col>
         </v-row>
@@ -234,11 +234,11 @@ const faqs = [
   },
   {
     question: 'What are your support hours?',
-    answer: 'Our phone support is available Monday-Friday 8:00am-4:00pm.'
+    answer: 'Our phone support is available Monday-Friday 8:00am-5:30pm, Saturday 8:00am-4:00pm.'
   },
   {
     question: 'Can I schedule an urgent appointment?',
-    answer: 'Coming soon - schedule an appointment or reserve your place in line from your computer or phone. Call us for more information.'
+    answer: 'Yes! You can schedule an appointment or reserve your place in line from your computer or phone. Call us for more information.'
   }
 ]
 
